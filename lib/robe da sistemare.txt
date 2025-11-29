@@ -1,0 +1,4 @@
+fix index buttons linking to other pages
+other pages should have a way to return to index
+
+in index, league highlights 6 blocks, should be present with AT MOST 3 block per line (i don't have a minimum beacuse i don't want to mess with smller screens)
