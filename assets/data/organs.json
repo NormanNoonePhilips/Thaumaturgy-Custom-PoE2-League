@@ -2,7 +2,7 @@
     "organs": {
         "crystalline_brain": {
             "name": "Crystalline Brain",
-            "icon": "images/organs/crystalline_brain.png",
+            "icon": "assets/images/organs/crystalline_brain.png",
             "type": "Organ",
             "slot": "Brain",
             "description": "Magical and spell processing capabilities",
@@ -33,7 +33,7 @@
         },
         "composite_pupils": {
             "name": "Composite Pupils",
-            "icon": "images/organs/composite_pupils.png",
+            "icon": "assets/images/organs/composite_pupils.png",
             "type": "Organ",
             "slot": "Eyes",
             "description": "Sensory and perception enhancement",
@@ -64,7 +64,7 @@
         },
         "hypermetabolic_heart": {
             "name": "Hypermetabolic Heart",
-            "icon": "images/organs/hypermetabolic_heart.png",
+            "icon": "assets/images/organs/hypermetabolic_heart.png",
             "type": "Organ",
             "slot": "Heart",
             "description": "Speed and energy generation",
@@ -95,7 +95,7 @@
         },
         "basal_liver": {
             "name": "Basal Liver",
-            "icon": "images/organs/basal_liver.png",
+            "icon": "assets/images/organs/basal_liver.png",
             "type": "Organ",
             "slot": "Liver",
             "description": "Toxin processing and resistance",
@@ -126,7 +126,7 @@
         },
         "fractal_lungs": {
             "name": "Fractal Lungs",
-            "icon": "images/organs/fractal_lungs.png",
+            "icon": "assets/images/organs/fractal_lungs.png",
             "type": "Organ",
             "slot": "Lungs",
             "description": "Elemental adaptation",
@@ -157,7 +157,7 @@
         },
         "noxious_bladder": {
             "name": "Noxious Bladder",
-            "icon": "images/organs/noxious_bladder.png",
+            "icon": "assets/images/organs/noxious_bladder.png",
             "type": "Organ",
             "slot": "Bladder",
             "description": "Poison and chaos affinity",
@@ -188,7 +188,7 @@
         },
         "prismatic_bones": {
             "name": "Prismatic Bones",
-            "icon": "images/organs/prismatic_bones.png",
+            "icon": "assets/images/organs/prismatic_bones.png",
             "type": "Organ",
             "slot": "Bones",
             "description": "Physical structure and defense",
@@ -219,7 +219,7 @@
         },
         "unstable_muscles": {
             "name": "Unstable Muscles",
-            "icon": "images/organs/unstable_muscles.png",
+            "icon": "assets/images/organs/unstable_muscles.png",
             "type": "Organ",
             "slot": "Muscles",
             "description": "Movement and physical power",
@@ -250,7 +250,7 @@
         },
         "sanctified_tissue": {
             "name": "Sanctified Tissue",
-            "icon": "images/organs/sanctified_tissue.png",
+            "icon": "assets/images/organs/sanctified_tissue.png",
             "type": "Unique Organ",
             "slot": "Special",
             "description": "Unique endgame organ with divine properties",
@@ -267,7 +267,7 @@
         },
         "engorged_amygdala": {
             "name": "Engorged Amygdala",
-            "icon": "images/organs/engorged_amygdala.png",
+            "icon": "assets/images/organs/engorged_amygdala.png",
             "type": "Unique Organ",
             "slot": "Special",
             "description": "Unique endgame organ with psychic properties",
@@ -284,7 +284,7 @@
         },
         "eldritch_mesentery": {
             "name": "Eldritch Mesentery",
-            "icon": "images/organs/eldritch_mesentery.png",
+            "icon": "assets/images/organs/eldritch_mesentery.png",
             "type": "Unique Organ",
             "slot": "Special",
             "description": "Unique endgame organ with Beyond properties",
@@ -302,7 +302,7 @@
     },
     "caged_trophy": {
         "name": "Caged Trophy",
-        "icon": "images/items/caged_trophy.png",
+        "icon": "assets/images/items/caged_trophy.png",
         "type": "Currency",
         "description": "A specimen captured during the Great Hunt",
         "effect": "Used to construct Test Subjects and unlock crafting recipes",

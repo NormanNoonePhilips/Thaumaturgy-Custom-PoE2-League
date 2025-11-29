@@ -26,14 +26,21 @@ class PoeTooltipSystem {
         console.log('PoE2 Tooltip System initialized');
     }
 
+    // Resolve asset paths so JSON data can use paths relative to assets/
+    resolveAssetPath(path) {
+        if (!path) return path;
+        if (path.startsWith('http') || path.startsWith('/') || path.startsWith('assets/')) return path;
+        return 'assets/' + path;
+    }
+
     async loadData() {
         try {
             // Load organs data
-            const organsResponse = await fetch('data/organs.json');
+            const organsResponse = await fetch('assets/data/organs.json');
             this.organsData = await organsResponse.json();
 
             // Load atlas passives data
-            const passivesResponse = await fetch('data/atlas_passives.json');
+            const passivesResponse = await fetch('assets/data/atlas_passives.json');
             this.atlasPassivesData = await passivesResponse.json();
 
         } catch (error) {
@@ -117,7 +124,7 @@ class PoeTooltipSystem {
 
         let html = `
             <div class="poe-tooltip-header">
-                <img src="${organ.icon}" alt="${organ.name}" class="poe-tooltip-icon">
+                <img src="${this.resolveAssetPath(organ.icon)}" alt="${organ.name}" class="poe-tooltip-icon">
                 <div class="poe-tooltip-title">
                     <div class="poe-tooltip-name ${rarity}">${tierData.name}</div>
                     <div class="poe-tooltip-type">${organ.type} - ${organ.slot}</div>
@@ -193,7 +200,7 @@ class PoeTooltipSystem {
 
         let html = `
             <div class="poe-tooltip-header">
-                <img src="${passive.icon}" alt="${passive.name}" class="poe-tooltip-icon">
+                <img src="${this.resolveAssetPath(passive.icon)}" alt="${passive.name}" class="poe-tooltip-icon">
                 <div class="poe-tooltip-title">
                     <div class="poe-tooltip-name ${isKeystone ? 'unique' : 'rare'}">${passive.name}</div>
                     <div class="poe-tooltip-type">${passive.type}</div>
@@ -251,7 +258,7 @@ class PoeTooltipSystem {
     buildCurrencyTooltip(currency) {
         let html = `
             <div class="poe-tooltip-header">
-                <img src="${currency.icon}" alt="${currency.name}" class="poe-tooltip-icon">
+                <img src="${this.resolveAssetPath(currency.icon)}" alt="${currency.name}" class="poe-tooltip-icon">
                 <div class="poe-tooltip-title">
                     <div class="poe-tooltip-name rare">${currency.name}</div>
                     <div class="poe-tooltip-type">${currency.type}</div>
@@ -360,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Helper function to create item references in HTML
 function createPoeItem(itemId, itemType = 'organ', tier = 'purified', displayName = null) {
     return `<span class="poe-item" data-poe-item="${itemId}" data-poe-type="${itemType}" data-poe-tier="${tier}">
-        <img src="images/${itemType === 'passive' ? 'passives' : itemType === 'currency' ? 'items' : 'organs'}/${itemId}.png" 
+        <img src="assets/images/${itemType === 'passive' ? 'passives' : itemType === 'currency' ? 'items' : 'organs'}/${itemId}.png" 
             class="poe-item-icon" alt="${displayName || itemId}">
         <span class="poe-item-name ${tier === 'unique' ? 'unique' : tier === 'purified' ? 'rare' : tier === 'refined' ? 'uncommon' : 'common'}">
             ${displayName || itemId.replace(/_/g, ' ')}

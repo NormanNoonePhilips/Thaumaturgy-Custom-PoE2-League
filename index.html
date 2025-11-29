@@ -8,7 +8,8 @@
 
     <!-- Main Styles -->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/bookmarks.css">
+    <link rel="stylesheet" href="assets/css/bookmark.css">
+    <link rel="stylesheet" href="assets/css/tooltip.css">
 
     <!-- Load GSAP and Dependencies FIRST -->
     <script src="lib/gsap.min.js"></script>
@@ -21,16 +22,18 @@
     <!-- Then load main scripts -->
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/horizontal-scroll.js" defer></script>
-    <script src="assets/js/bookmarks.js" defer></script>
+    <script src="assets/js/bookmark.js" defer></script>
+    <script src="assets/js/tooltip.js" defer></script>
 
-    <!-- Disable scroll animations on index page -->
-    <script>
+    <!-- Disable scroll animations on index page (uncomment to enable) -->
+    <!--<script>
         window.disableScrollAnimations = true;
-    </script>
+    </script>-->
 
 </head>
 
 <body>
+    <a id="top" style="position: relative; top: 0; display: block; width: 1px; height: 1px; visibility: hidden;"></a>
     <div class="bg-pattern"></div>
     <div class="blood-drip"></div>
 
@@ -61,7 +64,7 @@
         or legitimately acquired on Itch.io.
     </div>
 
-    <header id="top">
+    <header id="tooltips-demo">
         <h1>THAUMATURGY</h1>
         <div class="subtitle">A Path of Exile 2 League Mechanic Concept</div>
         <div class="tagline">HUNT • HARVEST • CONSTRUCT • CONQUER</div>
@@ -101,7 +104,7 @@
                     style="background: rgba(40, 30, 20, 0.5); padding: 25px; border-left: 4px solid #8b4513; border-radius: 5px; transition: all 0.3s ease;">
                     <div class="feature-icon"
                         style="width: 48px; height: 48px; margin-bottom: 12px; filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));">
-                        <img src="images/icons/great-hunt.png" alt="Great Hunt">
+                        <img src="assets/images/icons/great-hunt.png" alt="Great Hunt">
                     </div>
                     <h4 style="color: #d4af37; font-size: 1.3em; margin-bottom: 10px;">The Great Hunt</h4>
                     <p style="color: #a0826d; font-size: 0.95em;">Hunt special "Playmate" monsters in maps, collecting
@@ -111,7 +114,7 @@
                     style="background: rgba(40, 30, 20, 0.5); padding: 25px; border-left: 4px solid #8b4513; border-radius: 5px; transition: all 0.3s ease;">
                     <div class="feature-icon"
                         style="width: 48px; height: 48px; margin-bottom: 12px; filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));">
-                        <img src="images/icons/factory.png" alt="Factory">
+                        <img src="assets/images/icons/factory.png" alt="Factory">
                     </div>
                     <h4 style="color: #d4af37; font-size: 1.3em; margin-bottom: 10px;">The Factory</h4>
                     <p style="color: #a0826d; font-size: 0.95em;">Your crafting base where Tane assembles Test Subjects
@@ -121,7 +124,7 @@
                     style="background: rgba(40, 30, 20, 0.5); padding: 25px; border-left: 4px solid #8b4513; border-radius: 5px; transition: all 0.3s ease;">
                     <div class="feature-icon"
                         style="width: 48px; height: 48px; margin-bottom: 12px; filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));">
-                        <img src="images/icons/organs.png" alt="Organs">
+                        <img src="assets/images/icons/organs.png" alt="Organs">
                     </div>
                     <h4 style="color: #d4af37; font-size: 1.3em; margin-bottom: 10px;">8 Organ Systems</h4>
                     <p style="color: #a0826d; font-size: 0.95em;">Collect eight different organ types across three
@@ -131,7 +134,7 @@
                     style="background: rgba(40, 30, 20, 0.5); padding: 25px; border-left: 4px solid #8b4513; border-radius: 5px; transition: all 0.3s ease;">
                     <div class="feature-icon"
                         style="width: 48px; height: 48px; margin-bottom: 12px; filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));">
-                        <img src="images/icons/test-subject.png" alt="Test Subject">
+                        <img src="assets/images/icons/test-subject.png" alt="Test Subject">
                     </div>
                     <h4 style="color: #d4af37; font-size: 1.3em; margin-bottom: 10px;">Test Subjects</h4>
                     <p style="color: #a0826d; font-size: 0.95em;">Construct customizable boss fights from collected
@@ -141,7 +144,7 @@
                     style="background: rgba(40, 30, 20, 0.5); padding: 25px; border-left: 4px solid #8b4513; border-radius: 5px; transition: all 0.3s ease;">
                     <div class="feature-icon"
                         style="width: 48px; height: 48px; margin-bottom: 12px; filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));">
-                        <img src="images/icons/crafting.png" alt="Crafting">
+                        <img src="assets/images/icons/crafting.png" alt="Crafting">
                     </div>
                     <h4 style="color: #d4af37; font-size: 1.3em; margin-bottom: 10px;">Crafting Recipes</h4>
                     <p style="color: #a0826d; font-size: 0.95em;">Defeat Test Subjects to unlock powerful crafting
@@ -151,7 +154,7 @@
                     style="background: rgba(40, 30, 20, 0.5); padding: 25px; border-left: 4px solid #8b4513; border-radius: 5px; transition: all 0.3s ease;">
                     <div class="feature-icon"
                         style="width: 48px; height: 48px; margin-bottom: 12px; filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));">
-                        <img src="images/icons/pinnacle.png" alt="Pinnacle Boss">
+                        <img src="assets/images/icons/pinnacle.png" alt="Pinnacle Boss">
                     </div>
                     <h4 style="color: #d4af37; font-size: 1.3em; margin-bottom: 10px;">Pinnacle Boss</h4>
                     <p style="color: #a0826d; font-size: 0.95em;">Face Einhar himself in his Old Menagerie—the ultimate
@@ -216,7 +219,7 @@
         <div class="nav-grid">
             <a href="Lore_and_Overview.html" class="nav-card">
                 <div class="nav-card-icon">
-                    <img src="images/icons/lore.png" alt="Lore">
+                    <img src="assets/images/icons/lore.png" alt="Lore">
                 </div>
                 <h3>Lore & Overview</h3>
                 <p>Discover the story of Einhar and Tane's partnership, and learn how Thaumaturgy fits into the Path of
@@ -225,7 +228,7 @@
 
             <a href="Core_Mechanics.html" class="nav-card">
                 <div class="nav-card-icon">
-                    <img src="images/icons/mechanics.png" alt="Mechanics">
+                    <img src="assets/images/icons/mechanics.png" alt="Mechanics">
                 </div>
                 <h3>Core Mechanics</h3>
                 <p>Understand the Great Hunt, specimen collection, the Factory, and how Test Subjects are created and
@@ -235,7 +238,7 @@
 
             <a href="Organ_systems.html" class="nav-card">
                 <div class="nav-card-icon">
-                    <img src="images/icons/organ-systems.png" alt="Organ Systems">
+                    <img src="assets/images/icons/organ-systems.png" alt="Organ Systems">
                 </div>
                 <h3>Organ Systems</h3>
                 <p>Explore all eight organ types, their three progression tiers, and the powerful unique endgame organs.
@@ -245,7 +248,7 @@
 
             <a href="Test Subjects.html" class="nav-card">
                 <div class="nav-card-icon">
-                    <img src="images/icons/test-subjects.png" alt="Test Subjects">
+                    <img src="assets/images/icons/test-subjects.png" alt="Test Subjects">
                 </div>
                 <h3>Test Subjects</h3>
                 <p>Deep dive into boss construction, organ effects, scaling mechanics, and example build archetypes.</p>
@@ -253,7 +256,7 @@
 
             <a href="Crafting_Recipes.html" class="nav-card">
                 <div class="nav-card-icon">
-                    <img src="images/icons/recipes.png" alt="Recipes">
+                    <img src="assets/images/icons/recipes.png" alt="Recipes">
                 </div>
                 <h3>Crafting Recipes</h3>
                 <p>Complete catalog of crafting options, from currency generation to Savage implicits and high-risk
@@ -263,7 +266,7 @@
 
             <a href="NPCs_Dialogues.html" class="nav-card">
                 <div class="nav-card-icon">
-                    <img src="images/icons/dialogues.png" alt="Dialogues">
+                    <img src="assets/images/icons/dialogues.png" alt="Dialogues">
                 </div>
                 <h3>NPC Dialogues</h3>
                 <p>Experience the full conversations between Einhar and Tane, their philosophical debates, and character
@@ -273,7 +276,7 @@
 
             <a href="Pinnacle_Boss.html" class="nav-card">
                 <div class="nav-card-icon">
-                    <img src="images/icons/pinnacle-boss.png" alt="Pinnacle Boss">
+                    <img src="assets/images/icons/pinnacle-boss.png" alt="Pinnacle Boss">
                 </div>
                 <h3>Pinnacle Boss</h3>
                 <p>Face Huntmaster Einhar in the Old Menagerie—learn the mechanics, phases, and rewards of this ultimate
@@ -283,7 +286,7 @@
 
             <a href="Atlas_Passives.html" class="nav-card">
                 <div class="nav-card-icon">
-                    <img src="images/icons/atlas.png" alt="Atlas">
+                    <img src="assets/images/icons/atlas.png" alt="Atlas">
                 </div>
                 <h3>Atlas Passives</h3>
                 <p>Navigate the Atlas Passive Tree, understanding each node, keystone, and strategic path for your
@@ -293,7 +296,7 @@
 
             <a href="Design_Philosophy.html" class="nav-card">
                 <div class="nav-card-icon">
-                    <img src="images/icons/design.png" alt="Design">
+                    <img src="assets/images/icons/design.png" alt="Design">
                 </div>
                 <h3>Design Philosophy</h3>
                 <p>Understand the goals, inspirations, and balance considerations behind Thaumaturgy's design.</p>
@@ -317,7 +320,7 @@
                     Test Subjects can be constructed using various organs. For example, a
                     <span class="poe-item" data-poe-item="crystalline_brain" data-poe-type="organ"
                         data-poe-tier="purified">
-                        <img src="images/organs/crystalline_brain.png" class="poe-item-icon" alt="Crystalline Brain">
+                        <img src="assets/images/organs/crystalline_brain.png" class="poe-item-icon" alt="Crystalline Brain">
                         <span class="poe-item-name rare">Purified Crystalline Brain</span>
                     </span>
                     grants powerful spell-casting abilities.
@@ -327,14 +330,14 @@
                     Combining a
                     <span class="poe-item" data-poe-item="hypermetabolic_heart" data-poe-type="organ"
                         data-poe-tier="purified">
-                        <img src="images/organs/hypermetabolic_heart.png" class="poe-item-icon"
+                        <img src="assets/images/organs/hypermetabolic_heart.png" class="poe-item-icon"
                             alt="Hypermetabolic Heart">
                         <span class="poe-item-name rare">Purified Hypermetabolic Heart</span>
                     </span>
                     with
                     <span class="poe-item" data-poe-item="unstable_muscles" data-poe-type="organ"
                         data-poe-tier="purified">
-                        <img src="images/organs/unstable_muscles.png" class="poe-item-icon" alt="Unstable Muscles">
+                        <img src="assets/images/organs/unstable_muscles.png" class="poe-item-icon" alt="Unstable Muscles">
                         <span class="poe-item-name rare">Purified Unstable Muscles</span>
                     </span>
                     creates an extremely fast and deadly physical attacker.
@@ -346,19 +349,19 @@
                         The most powerful organs include
                         <span class="poe-item" data-poe-item="sanctified_tissue" data-poe-type="organ"
                             data-poe-tier="unique">
-                            <img src="images/organs/sanctified_tissue.png" class="poe-item-icon"
+                            <img src="assets/images/organs/sanctified_tissue.png" class="poe-item-icon"
                                 alt="Sanctified Tissue">
                             <span class="poe-item-name unique">Sanctified Tissue</span>
                         </span>,
                         <span class="poe-item" data-poe-item="engorged_amygdala" data-poe-type="organ"
                             data-poe-tier="unique">
-                            <img src="images/organs/engorged_amygdala.png" class="poe-item-icon"
+                            <img src="assets/images/organs/engorged_amygdala.png" class="poe-item-icon"
                                 alt="Engorged Amygdala">
                             <span class="poe-item-name unique">Engorged Amygdala</span>
                         </span>, and
                         <span class="poe-item" data-poe-item="eldritch_mesentery" data-poe-type="organ"
                             data-poe-tier="unique">
-                            <img src="images/organs/eldritch_mesentery.png" class="poe-item-icon"
+                            <img src="assets/images/organs/eldritch_mesentery.png" class="poe-item-icon"
                                 alt="Eldritch Mesentery">
                             <span class="poe-item-name unique">Eldritch Mesentery</span>
                         </span>.
@@ -374,7 +377,7 @@
                 <p>
                     To construct a Test Subject, you'll need
                     <span class="poe-item" data-poe-item="caged_trophy" data-poe-type="currency">
-                        <img src="images/items/caged_trophy.png" class="poe-item-icon" alt="Caged Trophy">
+                        <img src="assets/images/items/caged_trophy.png" class="poe-item-icon" alt="Caged Trophy">
                         <span class="poe-item-name rare">Caged Trophies</span>
                     </span>
                     which are dropped by Playmates during the Great Hunt.
@@ -383,7 +386,7 @@
                 <p>
                     Each
                     <span class="poe-item" data-poe-item="caged_trophy" data-poe-type="currency">
-                        <img src="images/items/caged_trophy.png" class="poe-item-icon" alt="Caged Trophy">
+                        <img src="assets/images/items/caged_trophy.png" class="poe-item-icon" alt="Caged Trophy">
                         <span class="poe-item-name rare">Caged Trophy</span>
                     </span>
                     increases the Test Subject's power, making the fight more challenging but more rewarding.
@@ -398,7 +401,7 @@
                 <p>
                     The Atlas Passive Tree offers powerful customization options. For example,
                     <span class="poe-item" data-poe-item="until_slaughter" data-poe-type="passive">
-                        <img src="images/passives/until_slaughter.png" class="poe-item-icon"
+                        <img src="assets/images/passives/until_slaughter.png" class="poe-item-icon"
                             alt="Until we slaughter you!">
                         <span class="poe-item-name unique">...Until we slaughter you!</span>
                     </span>
@@ -408,7 +411,7 @@
                 <p>
                     Risk-takers might enjoy
                     <span class="poe-item" data-poe-item="slow_progress" data-poe-type="passive">
-                        <img src="images/passives/slow_progress.png" class="poe-item-icon"
+                        <img src="assets/images/passives/slow_progress.png" class="poe-item-icon"
                             alt="Slow progress is still progress">
                         <span class="poe-item-name unique">Slow progress is still progress</span>
                     </span>, which introduces crafting failure chance in exchange for organ retention.
@@ -417,7 +420,7 @@
                 <p>
                     For delirium enthusiasts,
                     <span class="poe-item" data-poe-item="capable_experiencing" data-poe-type="passive">
-                        <img src="images/passives/capable_experiencing.png" class="poe-item-icon"
+                        <img src="assets/images/passives/capable_experiencing.png" class="poe-item-icon"
                             alt="Capable of experiencing">
                         <span class="poe-item-name unique">Capable of experiencing</span>
                     </span>
@@ -433,17 +436,17 @@
                 <p>
                     Organs come in three tiers. Compare an
                     <span class="poe-item" data-poe-item="basal_liver" data-poe-type="organ" data-poe-tier="impure">
-                        <img src="images/organs/basal_liver.png" class="poe-item-icon" alt="Basal Liver">
+                        <img src="assets/images/organs/basal_liver.png" class="poe-item-icon" alt="Basal Liver">
                         <span class="poe-item-name common">Impure Basal Liver</span>
                     </span>
                     with a
                     <span class="poe-item" data-poe-item="basal_liver" data-poe-type="organ" data-poe-tier="refined">
-                        <img src="images/organs/basal_liver.png" class="poe-item-icon" alt="Basal Liver">
+                        <img src="assets/images/organs/basal_liver.png" class="poe-item-icon" alt="Basal Liver">
                         <span class="poe-item-name uncommon">Refined Basal Liver</span>
                     </span>
                     and finally a
                     <span class="poe-item" data-poe-item="basal_liver" data-poe-type="organ" data-poe-tier="purified">
-                        <img src="images/organs/basal_liver.png" class="poe-item-icon" alt="Basal Liver">
+                        <img src="assets/images/organs/basal_liver.png" class="poe-item-icon" alt="Basal Liver">
                         <span class="poe-item-name rare">Purified Basal Liver</span>
                     </span>
                     to see the progression.
