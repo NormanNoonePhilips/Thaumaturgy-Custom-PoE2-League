@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Fade in sections on scroll
+    // Animate main sections only - children will follow
     gsap.utils.toArray('.intro-section, .feature-showcase, .npc-showcase').forEach((section) => {
         gsap.from(section, {
             scrollTrigger: {
                 trigger: section,
                 start: 'top 80%',
-                end: 'top 20%',
+                end: 'top 30%',
                 toggleActions: 'play none none reverse'
             },
             opacity: 0,
@@ -27,53 +27,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Animate individual cards within sections
-    gsap.utils.toArray('.nav-card').forEach((card, index) => {
-        gsap.from(card, {
+    // Animate nav-grid section and its cards together
+    const navGrid = document.querySelector('.nav-grid');
+    if (navGrid) {
+        // First animate the entire grid container
+        gsap.from(navGrid, {
             scrollTrigger: {
-                trigger: card,
+                trigger: navGrid,
                 start: 'top 80%',
-                end: 'top 20%',
+                end: 'top 30%',
                 toggleActions: 'play none none reverse'
             },
-            x: 100,
             opacity: 0,
-            duration: 0.8,
-            delay: index * 0.1,
+            y: 50,
+            duration: 1,
             ease: 'power2.out'
         });
-    });
 
-    // Animate feature items
-    gsap.utils.toArray('.feature-item').forEach((item, index) => {
-        gsap.from(item, {
+        // Then stagger the cards within
+        gsap.from('.nav-card', {
             scrollTrigger: {
-                trigger: item,
-                start: 'top 80%',
+                trigger: navGrid,
+                start: 'top 70%',
                 toggleActions: 'play none none reverse'
             },
-            x: 50,
             opacity: 0,
+            y: 30,
             duration: 0.6,
-            delay: index * 0.05,
-            ease: 'power2.out'
+            stagger: 0.1,
+            ease: 'power2.out',
+            delay: 0.3
         });
-    });
-
-    // Animate NPC cards
-    gsap.utils.toArray('.npc-card').forEach((card, index) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            x: index % 2 === 0 ? -100 : 100,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power2.out'
-        });
-    });
+    }
 
     console.log('Scroll animations initialized');
 });
