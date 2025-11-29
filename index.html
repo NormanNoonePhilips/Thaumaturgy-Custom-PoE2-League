@@ -8,7 +8,8 @@
 
     <!-- Main Styles -->
     <link rel="stylesheet" href="assets/css/main.css">
-    
+    <link rel="stylesheet" href="assets/css/bookmarks.css">
+
     <!-- Load GSAP and Dependencies FIRST -->
     <script src="lib/gsap.min.js"></script>
     <script src="lib/ScrollTrigger.min.js"></script>
@@ -20,7 +21,8 @@
     <!-- Then load main scripts -->
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/horizontal-scroll.js" defer></script>
-    
+    <script src="assets/js/bookmarks.js" defer></script>
+
     <!-- Disable scroll animations on index page -->
     <script>
         window.disableScrollAnimations = true;
@@ -32,6 +34,23 @@
     <div class="bg-pattern"></div>
     <div class="blood-drip"></div>
 
+    <!-- Bookmark Navigation -->
+    <div id="bookmark-nav" class="bookmark-nav">
+        <button id="bookmark-toggle" class="bookmark-toggle" aria-label="Toggle Bookmarks">
+            <span class="bookmark-icon">📚</span>
+        </button>
+        <div id="bookmark-content" class="bookmark-content">
+            <h3>Quick Navigation</h3>
+            <ul class="bookmark-list">
+                <li><a href="#top">Top</a></li>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#highlights">League Highlights</a></li>
+                <li><a href="#guides">Meet Your Guides</a></li>
+                <li><a href="#explore">Explore the League</a></li>
+            </ul>
+        </div>
+    </div>
+
     <!-- Home Button (disabled on home page) -->
     <a href="index.html" class="home-button" style="opacity: 0.5; cursor: default;" aria-label="Home"></a>
 
@@ -42,7 +61,7 @@
         or legitimately acquired on Itch.io.
     </div>
 
-    <header>
+    <header id="top">
         <h1>THAUMATURGY</h1>
         <div class="subtitle">A Path of Exile 2 League Mechanic Concept</div>
         <div class="tagline">HUNT • HARVEST • CONSTRUCT • CONQUER</div>
@@ -50,7 +69,7 @@
     </header>
 
     <div class="container">
-        <div class="intro-section">
+        <div class="intro-section" id="intro">
             <div class="intro-quote"
                 style="background: linear-gradient(135deg, rgba(139, 0, 0, 0.15) 0%, rgba(139, 69, 19, 0.15) 100%); border: 2px solid rgba(139, 69, 19, 0.4); border-left: 5px solid #8b0000; border-right: 5px solid #8b4513; padding: 30px; margin: 30px auto; font-style: italic; font-size: 1.2em; color: #d4c5a0; border-radius: 8px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); text-align: center; max-width: 800px;">
                 "Stupid beast! You are captured!"<br>
@@ -73,7 +92,7 @@
             </div>
         </div>
 
-        <div class="feature-showcase"
+        <div class="feature-showcase" id="highlights"
             style="background: rgba(20, 20, 20, 0.9); border: 2px solid rgba(139, 69, 19, 0.4); border-radius: 10px; padding: 40px; margin: 60px auto; max-width: 1200px;">
             <h2>League Highlights</h2>
             <div class="feature-grid"
@@ -141,7 +160,7 @@
             </div>
         </div>
 
-        <h2>Meet Your Guides</h2>
+        <h2 id="guides">Meet Your Guides</h2>
 
         <div class="npc-showcase"
             style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; max-width: 1200px; margin: 60px auto; padding: 0 20px;">
@@ -192,7 +211,7 @@
             </div>
         </div>
 
-        <h2>Explore the League</h2>
+        <h2 id="explore">Explore the League</h2>
 
         <div class="nav-grid">
             <a href="Lore_and_Overview.html" class="nav-card">
@@ -204,7 +223,7 @@
                     Exile 2 narrative.</p>
             </a>
 
-            <a href="#" class="nav-card disabled">
+            <a href="Core_Mechanics.html" class="nav-card">
                 <div class="nav-card-icon">
                     <img src="images/icons/mechanics.png" alt="Mechanics">
                 </div>
@@ -221,6 +240,7 @@
                 <h3>Organ Systems</h3>
                 <p>Explore all eight organ types, their three progression tiers, and the powerful unique endgame organs.
                 </p>
+                <span class="coming-soon">Coming Soon</span>
             </a>
 
             <a href="Test Subjects.html" class="nav-card">
@@ -238,6 +258,7 @@
                 <h3>Crafting Recipes</h3>
                 <p>Complete catalog of crafting options, from currency generation to Savage implicits and high-risk
                     gambling.</p>
+                <span class="coming-soon">Coming Soon</span>
             </a>
 
             <a href="NPCs_Dialogues.html" class="nav-card">
@@ -247,9 +268,10 @@
                 <h3>NPC Dialogues</h3>
                 <p>Experience the full conversations between Einhar and Tane, their philosophical debates, and character
                     development.</p>
+                <span class="coming-soon">Coming Soon</span>
             </a>
 
-            <a href="#" class="nav-card disabled">
+            <a href="Pinnacle_Boss.html" class="nav-card">
                 <div class="nav-card-icon">
                     <img src="images/icons/pinnacle-boss.png" alt="Pinnacle Boss">
                 </div>
@@ -266,6 +288,7 @@
                 <h3>Atlas Passives</h3>
                 <p>Navigate the Atlas Passive Tree, understanding each node, keystone, and strategic path for your
                     playstyle.</p>
+                <span class="coming-soon">Coming Soon</span>
             </a>
 
             <a href="Design_Philosophy.html" class="nav-card">
