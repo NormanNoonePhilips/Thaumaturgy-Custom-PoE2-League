@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thaumaturgy - Path of Exile 2 League Concept</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            background: #0a0a0a;
+            color: #d4c5a0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.02) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .blood-drip {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(139, 0, 0, 0.3) 25%, 
+                rgba(139, 0, 0, 0.5) 50%, 
+                rgba(139, 0, 0, 0.3) 75%, 
+                transparent 100%);
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .disclaimer {
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(139, 69, 19, 0.3);
+            border-left: 4px solid rgba(212, 175, 55, 0.5);
+            padding: 15px 25px;
+            margin: 20px auto;
+            max-width: 1200px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #a0826d;
+            border-radius: 5px;
+        }
+
+        .disclaimer strong {
+            color: #d4af37;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: 
+                linear-gradient(180deg, rgba(139, 69, 19, 0.15) 0%, transparent 50%, rgba(139, 0, 0, 0.1) 100%);
+            border-bottom: 3px solid rgba(139, 69, 19, 0.4);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        h1 {
+            font-size: 4.5em;
+            color: #d4af37;
+            text-shadow: 
+                0 0 30px rgba(212, 175, 55, 0.6),
+                0 0 60px rgba(212, 175, 55, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 15px;
+            letter-spacing: 8px;
+            font-weight: bold;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    0 0 20px rgba(212, 175, 55, 0.4),
+                    0 0 40px rgba(212, 175, 55, 0.2),
+                    2px 2px 4px rgba(0, 0, 0, 0.8);
+            }
+            to {
+                text-shadow: 
+                    0 0 30px rgba(212, 175, 55, 0.8),
+                    0 0 60px rgba(212, 175, 55, 0.4),
+                    2px 2px 4px rgba(0, 0, 0, 0.8);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #c4915f;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            color: #8b4513;
+            margin-top: 25px;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .intro-section {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .intro-quote {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.15) 0%, rgba(139, 69, 19, 0.15) 100%);
+            border: 2px solid rgba(139, 69, 19, 0.4);
+            border-left: 5px solid #8b0000;
+            border-right: 5px solid #8b4513;
+            padding: 30px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 1.2em;
+            color: #d4c5a0;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .intro-text {
+            font-size: 1.15em;
+            line-height: 1.8;
+            margin: 25px 0;
+            color: #c4a57b;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .nav-card {
+            background: linear-gradient(135deg, rgba(40, 30, 20, 0.8) 0%, rgba(20, 15, 10, 0.8) 100%);
+            border: 2px solid rgba(139, 69, 19, 0.4);
+            border-radius: 10px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .nav-card:hover::before {
+            left: 100%;
+        }
+
+        .nav-card:hover {
+            border-color: #d4af37;
+            box-shadow: 
+                0 0 30px rgba(212, 175, 55, 0.4),
+                inset 0 0 20px rgba(212, 175, 55, 0.1);
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .nav-card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover .nav-card-icon {
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.7));
+            transform: scale(1.1);
+        }
+
+        .nav-card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-card h3 {
+            font-size: 1.8em;
+            color: #d4af37;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-card p {
+            color: #a0826d;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .nav-card.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .nav-card.disabled:hover {
+            transform: none;
+            border-color: rgba(139, 69, 19, 0.4);
+            box-shadow: none;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            background: rgba(139, 0, 0, 0.3);
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-top: 10px;
+            color: #ff6b6b;
+            border: 1px solid rgba(139, 0, 0, 0.5);
+        }
+
+        .feature-showcase {
+            background: rgba(20, 20, 20, 0.9);
+            border: 2px solid rgba(139, 69, 19, 0.4);
+            border-radius: 10px;
+            padding: 40px;
+            margin: 60px auto;
+            max-width: 1200px;
+        }
+
+        .feature-showcase h2 {
+            font-size: 2.5em;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-item {
+            background: rgba(40, 30, 20, 0.5);
+            padding: 25px;
+            border-left: 4px solid #8b4513;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-left-color: #d4af37;
+            background: rgba(40, 30, 20, 0.7);
+            transform: translateX(5px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+        }
+
+        .feature-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .feature-item h4 {
+            color: #d4af37;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            color: #a0826d;
+            font-size: 0.95em;
+        }
+
+        .npc-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .npc-card {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.2) 0%, rgba(60, 40, 30, 0.4) 100%);
+            border: 3px solid rgba(139, 69, 19, 0.5);
+            padding: 35px;
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .npc-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .npc-card::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, #d4af37, #8b4513);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .npc-card:hover::before {
+            opacity: 0.2;
+        }
+
+        .npc-name {
+            font-size: 2.2em;
+            color: #d4af37;
+            margin-bottom: 8px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .npc-title {
+            color: #c4915f;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .npc-quote {
+            background: rgba(139, 0, 0, 0.15);
+            border-left: 4px solid #8b0000;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #d4c5a0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 80px;
+            background: linear-gradient(180deg, transparent 0%, rgba(20, 10, 10, 0.6) 100%);
+            border-top: 2px solid rgba(139, 69, 19, 0.3);
+        }
+
+        .footer-quote {
+            max-width: 700px;
+            margin: 30px auto;
+            font-size: 1.1em;
+            color: #8b4513;
+            font-style: italic;
+            padding: 25px;
+            background: rgba(139, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8em;
+                letter-spacing: 4px;
+            }
+
+            .nav-grid, .npc-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .subtitle {
+                font-size: 1.2em;
+            }
+
+            .tagline {
+                font-size: 1.1em;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .scroll-indicator::after {
+            content: '⌄';
+            font-size: 2em;
+            color: #d4af37;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    <div class="blood-drip"></div>
+
+    <div class="disclaimer">
+        <strong>Disclaimer:</strong> Path of Exile, Path of Exile 2, all characters, images, assets, and related content are the property of <strong>Grinding Gear Games (GGG)</strong>. This is a fan-made concept created as a love letter to the game and its community. No copyright infringement intended.
+    </div>
+
+    <header>
+        <h1>THAUMATURGY</h1>
+        <div class="subtitle">A Path of Exile 2 League Mechanic Concept</div>
+        <div class="tagline">HUNT • HARVEST • CONSTRUCT • CONQUER</div>
+        <div class="scroll-indicator"></div>
+    </header>
+
+    <div class="container">
+        <div class="intro-section">
+            <div class="intro-quote">
+                "Stupid beast! You are captured!"<br>
+                "Fascinating. The synthesis is complete."<br>
+                <br>
+                <strong>— Einhar Frey & Tane Octaviusy</strong>
+            </div>
+
+            <div class="intro-text">
+                Between the events of Path of Exile 1 and 2, the ghostly <strong>Einhar Frey</strong> and the alchemist <strong>Tane Octavius</strong> formed an unlikely partnership. Together, they've created an endless cycle of hunting, crafting, and evolution where players hunt corrupted beasts, harvest their organs, and construct personalized boss encounters that unlock powerful crafting options.
+            </div>
+
+            <div class="intro-text">
+                <strong>Thaumaturgy</strong> combines the hunting prowess of Bestiary with the specimen assembly of Metamorph, creating a league mechanic focused on player agency, risk-reward decisions, and deterministic crafting with RNG elements.
+            </div>
+        </div>
+
+        <div class="feature-showcase">
+            <h2>League Highlights</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="images/icons/great-hunt.png" alt="Great Hunt">
+                    </div>
+                    <h4>The Great Hunt</h4>
+                    <p>Hunt special "Playmate" monsters in maps, collecting Caged Trophies and harvesting organs from powerful prey.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="images/icons/factory.png" alt="Factory">
+                    </div>
+                    <h4>The Factory</h4>
+                    <p>Your crafting base where Tane assembles Test Subjects and Einhar provides hunting commentary.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="images/icons/organs.png" alt="Organs">
+                    </div>
+                    <h4>8 Organ Systems</h4>
+                    <p>Collect eight different organ types across three tiers, plus unique endgame organs with special properties.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="images/icons/test-subject.png" alt="Test Subject">
+                    </div>
+                    <h4>Test Subjects</h4>
+                    <p>Construct customizable boss fights from collected organs. Boss difficulty and rewards scale with your investment.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="images/icons/crafting.png" alt="Crafting">
+                    </div>
+                    <h4>Crafting Recipes</h4>
+                    <p>Defeat Test Subjects to unlock powerful crafting options, from currency generation to Savage implicits.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="images/icons/pinnacle.png" alt="Pinnacle Boss">
+                    </div>
+                    <h4>Pinnacle Boss</h4>
+                    <p>Face Einhar himself in his Old Menagerie—the ultimate test of hunter versus hunter.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; font-size: 2.5em; color: #d4af37; margin: 60px 0 40px; text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);">Meet Your Guides</h2>
+
+        <div class="npc-showcase">
+            <div class="npc-card">
+                <div class="npc-name">Einhar Frey</div>
+                <div class="npc-title">Legendary Beast Hunter • Ghost</div>
+                <p style="color: #c4a57b; margin-bottom: 15px;">
+                    Enthusiastic, simple in speech but wise in hunting, Einhar sees death as a promotion. His endless pursuit of "the Perfect Prey" has kept his spirit bound to the mortal realm, and now he invites you to join his Great Hunts.
+                </p>
+                <div class="npc-quote">
+                    "EXILE! Haha! Welcome to our workshop! Is beautiful, yes? Tane makes the science, Einhar brings the subjects! A perfect partnership!"
+                </div>
+                <p style="color: #8b4513; font-style: italic; margin-top: 15px;">
+                    <strong>Philosophy:</strong> The hunt never ends at the skin. The real beast is what's inside.
+                </p>
+            </div>
+
+            <div class="npc-card">
+                <div class="npc-name">Tane Octavius</div>
+                <div class="npc-title">Clinical Alchemist • Researcher</div>
+                <p style="color: #c4a57b; margin-bottom: 15px;">
+                    Precise, analytical, and uncomfortable with violence yet fascinated by results. Tane seeks to understand corruption through empirical study, methodically dissecting the impossible to find patterns in chaos.
+                </p>
+                <div class="npc-quote">
+                    "These organs are evolutionary responses to impossible conditions. They shouldn't work. But they do. That's the true value here—what we can learn from forcing them to work together."
+                </div>
+                <p style="color: #8b4513; font-style: italic; margin-top: 15px;">
+                    <strong>Philosophy:</strong> Science over instinct. Observation over assumption.
+                </p>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; font-size: 2.5em; color: #d4af37; margin: 80px 0 40px; text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);">Explore the League</h2>
+
+        <div class="nav-grid">
+            <div class="nav-card disabled">
+                <div class="nav-card-icon">
+                    <img src="images/icons/lore.png" alt="Lore">
+                </div>
+                <h3>Lore & Overview</h3>
+                <p>Discover the story of Einhar and Tane's partnership, and learn how Thaumaturgy fits into the Path of Exile 2 narrative.</p>
+                <span class="coming-soon">Coming Soon</span>
+            </div>
+
+            <div class="nav-card disabled">
+                <div class="nav-card-icon">
+                    <img src="images/icons/mechanics.png" alt="Mechanics">
+                </div>
+                <h3>Core Mechanics</h3>
+                <p>Understand the Great Hunt, specimen collection, the Factory, and how Test Subjects are created and defeated.</p>
+                <span class="coming-soon">Coming Soon</span>
+            </div>
+
+            <div class="nav-card disabled">
+                <div class="nav-card-icon">
+                    <img src="images/icons/organ-systems.png" alt="Organ Systems">
+                </div>
+                <h3>Organ Systems</h3>
+                <p>Explore all eight organ types, their three progression tiers, and the powerful unique endgame organs.</p>
+                <span class="coming-soon">Coming Soon</span>
+            </div>
+
+            <div class="nav-card disabled">
+                <div class="nav-card-icon">
+                    <img src="images/icons/test-subjects.png" alt="Test Subjects">
+                </div>
+                <h3>Test Subjects</h3>
+                <p>Deep dive into boss construction, organ effects, scaling mechanics, and example build archetypes.</p>
+                <span class="coming-soon">Coming Soon</span>
+            </div>
+
+            <div class="nav-card disabled">
+                <div class="nav-card-icon">
+                    <img src="images/icons/recipes.png" alt="Recipes">
+                </div>
+                <h3>Crafting Recipes</h3>
+                <p>Complete catalog of crafting options, from currency generation to Savage implicits and high-risk gambling.</p>
+                <span class="coming-soon">Coming Soon</span>
+            </div>
+
+            <div class="nav-card disabled">
+                <div class="nav-card-icon">
+                    <img src="images/icons/dialogues.png" alt="Dialogues">
+                </div>
+                <h3>NPC Dialogues</h3>
+                <p>Experience the full conversations between Einhar and Tane, their philosophical debates, and character development.</p>
+                <span class="coming-soon">Coming Soon</span>
+            </div>
+
+            <div class="nav-card disabled">
+                <div class="nav-card-icon">
+                    <img src="images/icons/pinnacle-boss.png" alt="Pinnacle Boss">
+                </div>
+                <h3>Pinnacle Boss</h3>
+                <p>Face Huntmaster Einhar in the Old Menagerie—learn the mechanics, phases, and rewards of this ultimate encounter.</p>
+                <span class="coming-soon">Coming Soon</span>
+            </div>
+
+            <div class="nav-card disabled">
+                <div class="nav-card-icon">
+                    <img src="images/icons/atlas.png" alt="Atlas">
+                </div>
+                <h3>Atlas Passives</h3>
+                <p>Navigate the Atlas Passive Tree, understanding each node, keystone, and strategic path for your playstyle.</p>
+                <span class="coming-soon">Coming Soon</span>
+            </div>
+
+            <div class="nav-card disabled">
+                <div class="nav-card-icon">
+                    <img src="images/icons/design.png" alt="Design">
+                </div>
+                <h3>Design Philosophy</h3>
+                <p>Understand the goals, inspirations, and balance considerations behind Thaumaturgy's design.</p>
+                <span class="coming-soon">Coming Soon</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-quote">
+            "Einhar is caught, exile. Einhar LOVES this. Gods forgive me, but Einhar LOVES it. Every map you explore has new prey! New challenges! Things Einhar has never seen, will never see again! Is paradise for hunter!"
+            <br><br>
+            <strong>— Einhar Frey, on the Corruption</strong>
+        </div>
+        <p style="color: #8b4513; font-style: italic; margin-top: 30px;">
+            Custom League Design • Community Fan Project by Norman Noone
+        </p>
+        <p style="color: #6b5641; font-size: 0.9em; margin-top: 10px;">
+            2025/11/28 • Version 0.2
+        </p>
+    </footer>
+</body>
+</html>
