@@ -12,15 +12,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    // Toggle bookmark panel
+    // Toggle bookmark panel and update aria-expanded
     bookmarkToggle.addEventListener('click', function () {
         bookmarkNav.classList.toggle('active');
+        const expanded = bookmarkNav.classList.contains('active');
+        bookmarkToggle.setAttribute('aria-expanded', expanded);
     });
 
     // Close bookmarks when clicking outside
     document.addEventListener('click', function (event) {
         if (!bookmarkNav.contains(event.target)) {
             bookmarkNav.classList.remove('active');
+            bookmarkToggle.setAttribute('aria-expanded', false);
         }
     });
 
@@ -34,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (targetElement) {
                 // Close bookmark panel
                 bookmarkNav.classList.remove('active');
+                bookmarkToggle.setAttribute('aria-expanded', false);
 
                 // Smooth scroll to target
                 targetElement.scrollIntoView({
