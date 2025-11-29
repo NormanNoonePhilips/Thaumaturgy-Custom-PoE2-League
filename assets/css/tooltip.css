@@ -1,0 +1,313 @@
+/* ===================================
+   POE2 STYLE TOOLTIP SYSTEM
+   =================================== */
+
+/* Item reference in text */
+.poe-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.poe-item:hover {
+    filter: brightness(1.3);
+}
+
+/* Small inline icon */
+.poe-item-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    display: inline-block;
+    border: 1px solid rgba(139, 69, 19, 0.4);
+    border-radius: 2px;
+    background: rgba(20, 20, 20, 0.8);
+    padding: 2px;
+}
+
+/* Item name in text */
+.poe-item-name {
+    color: #d4af37;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: rgba(212, 175, 55, 0.5);
+}
+
+.poe-item-name.common {
+    color: #c8c8c8;
+}
+
+.poe-item-name.uncommon {
+    color: #88f;
+}
+
+.poe-item-name.rare {
+    color: #ff7;
+}
+
+.poe-item-name.unique {
+    color: #af6025;
+    text-shadow: 0 0 5px rgba(175, 96, 37, 0.5);
+}
+
+/* Tooltip container */
+.poe-tooltip {
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.8));
+}
+
+.poe-tooltip.show {
+    opacity: 1;
+}
+
+/* Tooltip content box */
+.poe-tooltip-content {
+    background: linear-gradient(135deg, rgba(15, 10, 5, 0.98) 0%, rgba(25, 15, 10, 0.98) 100%);
+    border: 2px solid #8b4513;
+    border-radius: 4px;
+    padding: 12px 16px;
+    min-width: 250px;
+    max-width: 400px;
+    box-shadow:
+        0 0 20px rgba(139, 69, 19, 0.6),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Tooltip header with icon */
+.poe-tooltip-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(139, 69, 19, 0.5);
+}
+
+.poe-tooltip-icon {
+    width: 48px;
+    height: 48px;
+    border: 2px solid rgba(139, 69, 19, 0.6);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+.poe-tooltip-title {
+    flex: 1;
+}
+
+.poe-tooltip-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.poe-tooltip-name.common {
+    color: #c8c8c8;
+}
+
+.poe-tooltip-name.uncommon {
+    color: #88f;
+    text-shadow: 0 0 8px rgba(136, 136, 255, 0.6);
+}
+
+.poe-tooltip-name.rare {
+    color: #ff7;
+    text-shadow: 0 0 8px rgba(255, 255, 119, 0.6);
+}
+
+.poe-tooltip-name.unique {
+    color: #af6025;
+    text-shadow: 0 0 8px rgba(175, 96, 37, 0.8);
+}
+
+.poe-tooltip-type {
+    font-size: 0.85em;
+    color: #8b6f47;
+    font-style: italic;
+}
+
+/* Tooltip body sections */
+.poe-tooltip-section {
+    margin: 8px 0;
+    padding: 6px 0;
+}
+
+.poe-tooltip-section:not(:last-child) {
+    border-bottom: 1px solid rgba(139, 69, 19, 0.3);
+}
+
+.poe-tooltip-label {
+    font-size: 0.9em;
+    color: #8b6f47;
+    margin-bottom: 4px;
+}
+
+.poe-tooltip-value {
+    color: #d4c5a0;
+    line-height: 1.5;
+}
+
+/* Effect text styling */
+.poe-tooltip-effect {
+    color: #88f;
+    font-weight: 500;
+}
+
+.poe-tooltip-positive {
+    color: #7f7;
+}
+
+.poe-tooltip-negative {
+    color: #f77;
+}
+
+/* Item level badge */
+.poe-tooltip-ilvl {
+    display: inline-block;
+    background: rgba(139, 69, 19, 0.4);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.85em;
+    color: #d4af37;
+    border: 1px solid rgba(139, 69, 19, 0.6);
+}
+
+/* Flavor text */
+.poe-tooltip-flavor {
+    font-style: italic;
+    color: #af8f6f;
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(139, 69, 19, 0.3);
+}
+
+/* Drop source info */
+.poe-tooltip-source {
+    font-size: 0.85em;
+    color: #6b5641;
+    margin-top: 6px;
+}
+
+/* Keystone special styling */
+.poe-tooltip-keystone {
+    border-color: #d4af37;
+    box-shadow:
+        0 0 25px rgba(212, 175, 55, 0.4),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.poe-tooltip-keystone .poe-tooltip-name {
+    color: #d4af37;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+
+/* Warning text */
+.poe-tooltip-warning {
+    background: rgba(139, 0, 0, 0.2);
+    border: 1px solid rgba(139, 0, 0, 0.5);
+    border-radius: 3px;
+    padding: 6px 10px;
+    color: #ff6b6b;
+    font-size: 0.9em;
+    margin-top: 8px;
+}
+
+/* Choices list */
+.poe-tooltip-choices {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+}
+
+.poe-tooltip-choices li {
+    padding: 4px 0 4px 16px;
+    position: relative;
+    color: #c4a57b;
+    font-size: 0.9em;
+}
+
+.poe-tooltip-choices li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #d4af37;
+}
+
+/* Scaling info table */
+.poe-tooltip-scaling {
+    font-size: 0.85em;
+    margin: 6px 0;
+}
+
+.poe-tooltip-scaling-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    color: #a0826d;
+}
+
+.poe-tooltip-scaling-label {
+    color: #8b6f47;
+}
+
+.poe-tooltip-scaling-value {
+    color: #7f7;
+    font-weight: 500;
+}
+
+/* Tier selector in tooltip */
+.poe-tooltip-tiers {
+    display: flex;
+    gap: 6px;
+    margin: 8px 0;
+}
+
+.poe-tooltip-tier-btn {
+    flex: 1;
+    padding: 4px 8px;
+    background: rgba(139, 69, 19, 0.3);
+    border: 1px solid rgba(139, 69, 19, 0.5);
+    border-radius: 3px;
+    color: #c4a57b;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.poe-tooltip-tier-btn:hover {
+    background: rgba(139, 69, 19, 0.5);
+    border-color: #d4af37;
+}
+
+.poe-tooltip-tier-btn.active {
+    background: rgba(212, 175, 55, 0.3);
+    border-color: #d4af37;
+    color: #d4af37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .poe-tooltip-content {
+        max-width: 300px;
+        font-size: 0.9em;
+    }
+
+    .poe-tooltip-icon {
+        width: 40px;
+        height: 40px;
+    }
+}

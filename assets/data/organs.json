@@ -1,0 +1,321 @@
+{
+    "organs": {
+        "crystalline_brain": {
+            "name": "Crystalline Brain",
+            "icon": "images/organs/crystalline_brain.png",
+            "type": "Organ",
+            "slot": "Brain",
+            "description": "Magical and spell processing capabilities",
+            "tiers": {
+                "impure": {
+                    "name": "Impure Crystalline Brain",
+                    "itemLevel": "≤40",
+                    "effect": "+20% Spell Damage, Casts random spells periodically",
+                    "rarity": "common",
+                    "dropSource": "Campaign and Early Maps"
+                },
+                "refined": {
+                    "name": "Refined Crystalline Brain",
+                    "itemLevel": "≤64",
+                    "effect": "+20% Spell Damage, Creates elemental walls",
+                    "rarity": "uncommon",
+                    "dropSource": "Mid-tier Maps"
+                },
+                "purified": {
+                    "name": "Purified Crystalline Brain",
+                    "itemLevel": "Endgame",
+                    "effect": "+20% Spell Damage, Major spell attacks, Arcane Overload",
+                    "rarity": "rare",
+                    "dropSource": "High-tier Maps and Bosses"
+                }
+            },
+            "flavorText": "The mind crystallized, processing magic as thought."
+        },
+        "composite_pupils": {
+            "name": "Composite Pupils",
+            "icon": "images/organs/composite_pupils.png",
+            "type": "Organ",
+            "slot": "Eyes",
+            "description": "Sensory and perception enhancement",
+            "tiers": {
+                "impure": {
+                    "name": "Impure Composite Pupils",
+                    "itemLevel": "≤40",
+                    "effect": "+25% Critical Hit Chance, +30% Critical Damage",
+                    "rarity": "common",
+                    "dropSource": "Campaign and Early Maps"
+                },
+                "refined": {
+                    "name": "Refined Composite Pupils",
+                    "itemLevel": "≤64",
+                    "effect": "+25% Critical Hit Chance, +30% Critical Damage, Tri-beam attack",
+                    "rarity": "uncommon",
+                    "dropSource": "Mid-tier Maps"
+                },
+                "purified": {
+                    "name": "Purified Composite Pupils",
+                    "itemLevel": "Endgame",
+                    "effect": "+25% Critical Hit Chance, +30% Critical Damage, Ocular Storm, Omniscient",
+                    "rarity": "rare",
+                    "dropSource": "High-tier Maps and Bosses"
+                }
+            },
+            "flavorText": "A thousand eyes, each seeing a different truth."
+        },
+        "hypermetabolic_heart": {
+            "name": "Hypermetabolic Heart",
+            "icon": "images/organs/hypermetabolic_heart.png",
+            "type": "Organ",
+            "slot": "Heart",
+            "description": "Speed and energy generation",
+            "tiers": {
+                "impure": {
+                    "name": "Impure Hypermetabolic Heart",
+                    "itemLevel": "≤40",
+                    "effect": "+15% Attack/Cast Speed, +10% Movement Speed",
+                    "rarity": "common",
+                    "dropSource": "Campaign and Early Maps"
+                },
+                "refined": {
+                    "name": "Refined Hypermetabolic Heart",
+                    "itemLevel": "≤64",
+                    "effect": "+15% Attack/Cast Speed, +10% Movement Speed, Triple Dash",
+                    "rarity": "uncommon",
+                    "dropSource": "Mid-tier Maps"
+                },
+                "purified": {
+                    "name": "Purified Hypermetabolic Heart",
+                    "itemLevel": "Endgame",
+                    "effect": "+15% Attack/Cast Speed, +10% Movement Speed, Hyperdash Flurry, Metabolic Overdrive",
+                    "rarity": "rare",
+                    "dropSource": "High-tier Maps and Bosses"
+                }
+            },
+            "flavorText": "It beats so fast it hums like a hummingbird's wings."
+        },
+        "basal_liver": {
+            "name": "Basal Liver",
+            "icon": "images/organs/basal_liver.png",
+            "type": "Organ",
+            "slot": "Liver",
+            "description": "Toxin processing and resistance",
+            "tiers": {
+                "impure": {
+                    "name": "Impure Basal Liver",
+                    "itemLevel": "≤40",
+                    "effect": "+30% Chaos Resistance, Inflicts Poison",
+                    "rarity": "common",
+                    "dropSource": "Campaign and Early Maps"
+                },
+                "refined": {
+                    "name": "Refined Basal Liver",
+                    "itemLevel": "≤64",
+                    "effect": "+30% Chaos Resistance, Inflicts Poison, Toxic Presence aura",
+                    "rarity": "uncommon",
+                    "dropSource": "Mid-tier Maps"
+                },
+                "purified": {
+                    "name": "Purified Basal Liver",
+                    "itemLevel": "Endgame",
+                    "effect": "+30% Chaos Resistance, Inflicts Poison, Septic Cloud, Toxin Recycler",
+                    "rarity": "rare",
+                    "dropSource": "High-tier Maps and Bosses"
+                }
+            },
+            "flavorText": "It filters out everything. Including mercy."
+        },
+        "fractal_lungs": {
+            "name": "Fractal Lungs",
+            "icon": "images/organs/fractal_lungs.png",
+            "type": "Organ",
+            "slot": "Lungs",
+            "description": "Elemental adaptation",
+            "tiers": {
+                "impure": {
+                    "name": "Impure Fractal Lungs",
+                    "itemLevel": "≤40",
+                    "effect": "+20% Elemental Damage, Breath weapon attack",
+                    "rarity": "common",
+                    "dropSource": "Campaign and Early Maps"
+                },
+                "refined": {
+                    "name": "Refined Fractal Lungs",
+                    "itemLevel": "≤64",
+                    "effect": "+20% Elemental Damage, Breath weapon, Elemental ground effects",
+                    "rarity": "uncommon",
+                    "dropSource": "Mid-tier Maps"
+                },
+                "purified": {
+                    "name": "Purified Fractal Lungs",
+                    "itemLevel": "Endgame",
+                    "effect": "+20% Elemental Damage, Dual element breath, Elemental Conflux, Adaptive Respiration",
+                    "rarity": "rare",
+                    "dropSource": "High-tier Maps and Bosses"
+                }
+            },
+            "flavorText": "Each breath splits into infinite branches of possibility."
+        },
+        "noxious_bladder": {
+            "name": "Noxious Bladder",
+            "icon": "images/organs/noxious_bladder.png",
+            "type": "Organ",
+            "slot": "Bladder",
+            "description": "Poison and chaos affinity",
+            "tiers": {
+                "impure": {
+                    "name": "Impure Noxious Bladder",
+                    "itemLevel": "≤40",
+                    "effect": "10% Chaos DoT aura, Applies Erosion",
+                    "rarity": "common",
+                    "dropSource": "Campaign and Early Maps"
+                },
+                "refined": {
+                    "name": "Refined Noxious Bladder",
+                    "itemLevel": "≤64",
+                    "effect": "10% Chaos DoT aura, Applies Erosion, Vents Bile",
+                    "rarity": "uncommon",
+                    "dropSource": "Mid-tier Maps"
+                },
+                "purified": {
+                    "name": "Purified Noxious Bladder",
+                    "itemLevel": "Endgame",
+                    "effect": "10% Chaos DoT aura, Applies Erosion, Miasma Orbs, Toxic Buildup",
+                    "rarity": "rare",
+                    "dropSource": "High-tier Maps and Bosses"
+                }
+            },
+            "flavorText": "The stench alone is a weapon."
+        },
+        "prismatic_bones": {
+            "name": "Prismatic Bones",
+            "icon": "images/organs/prismatic_bones.png",
+            "type": "Organ",
+            "slot": "Bones",
+            "description": "Physical structure and defense",
+            "tiers": {
+                "impure": {
+                    "name": "Impure Prismatic Bones",
+                    "itemLevel": "≤40",
+                    "effect": "+50% Armour, Reflects 10% Physical Damage",
+                    "rarity": "common",
+                    "dropSource": "Campaign and Early Maps"
+                },
+                "refined": {
+                    "name": "Refined Prismatic Bones",
+                    "itemLevel": "≤64",
+                    "effect": "+50% Armour, Reflects 15% Physical Damage, Bone Armor",
+                    "rarity": "uncommon",
+                    "dropSource": "Mid-tier Maps"
+                },
+                "purified": {
+                    "name": "Purified Prismatic Bones",
+                    "itemLevel": "Endgame",
+                    "effect": "+50% Armour, Reflects 25% Physical Damage, Prismatic Shatter, Calcified Wrath",
+                    "rarity": "rare",
+                    "dropSource": "High-tier Maps and Bosses"
+                }
+            },
+            "flavorText": "Bones that bend light and break steel."
+        },
+        "unstable_muscles": {
+            "name": "Unstable Muscles",
+            "icon": "images/organs/unstable_muscles.png",
+            "type": "Organ",
+            "slot": "Muscles",
+            "description": "Movement and physical power",
+            "tiers": {
+                "impure": {
+                    "name": "Impure Unstable Muscles",
+                    "itemLevel": "≤40",
+                    "effect": "+30% Physical Damage, Causes Bleeding",
+                    "rarity": "common",
+                    "dropSource": "Campaign and Early Maps"
+                },
+                "refined": {
+                    "name": "Refined Unstable Muscles",
+                    "itemLevel": "≤64",
+                    "effect": "+30% Physical Damage, Causes Bleeding, Tremor Slam",
+                    "rarity": "uncommon",
+                    "dropSource": "Mid-tier Maps"
+                },
+                "purified": {
+                    "name": "Purified Unstable Muscles",
+                    "itemLevel": "Endgame",
+                    "effect": "+30% Physical Damage, Causes Bleeding, Seismic Detonation, Muscle Fury",
+                    "rarity": "rare",
+                    "dropSource": "High-tier Maps and Bosses"
+                }
+            },
+            "flavorText": "Fiber bundles coiled tighter than steel springs."
+        },
+        "sanctified_tissue": {
+            "name": "Sanctified Tissue",
+            "icon": "images/organs/sanctified_tissue.png",
+            "type": "Unique Organ",
+            "slot": "Special",
+            "description": "Unique endgame organ with divine properties",
+            "tiers": {
+                "unique": {
+                    "name": "Sanctified Tissue",
+                    "itemLevel": "Endgame",
+                    "effect": "Regenerates 5% Life/sec, Cannot Die (once at 30% HP for 10s)",
+                    "rarity": "unique",
+                    "dropSource": "Endgame Content, Pinnacle Bosses"
+                }
+            },
+            "flavorText": "Divinity interrupted leaves flesh forever reaching for transcendence. The cells remember what they almost became."
+        },
+        "engorged_amygdala": {
+            "name": "Engorged Amygdala",
+            "icon": "images/organs/engorged_amygdala.png",
+            "type": "Unique Organ",
+            "slot": "Special",
+            "description": "Unique endgame organ with psychic properties",
+            "tiers": {
+                "unique": {
+                    "name": "Engorged Amygdala",
+                    "itemLevel": "Endgame",
+                    "effect": "Spawns Chaos explosions on hit, Deals 50% of damage as extra Chaos",
+                    "rarity": "unique",
+                    "dropSource": "Endgame Content, Pinnacle Bosses"
+                }
+            },
+            "flavorText": "The brain swelled to comprehend truths no mortal mind should hold. Now it whispers in languages which delight Chaos itself."
+        },
+        "eldritch_mesentery": {
+            "name": "Eldritch Mesentery",
+            "icon": "images/organs/eldritch_mesentery.png",
+            "type": "Unique Organ",
+            "slot": "Special",
+            "description": "Unique endgame organ with Beyond properties",
+            "tiers": {
+                "unique": {
+                    "name": "Eldritch Mesentery",
+                    "itemLevel": "Endgame",
+                    "effect": "Has Beyond modifier, +100% AoE",
+                    "rarity": "unique",
+                    "dropSource": "Endgame Content, Pinnacle Bosses"
+                }
+            },
+            "flavorText": "A gift the stars did not ask consent to give. The Devourer's hunger coils in borrowed flesh, patient and eternal."
+        }
+    },
+    "caged_trophy": {
+        "name": "Caged Trophy",
+        "icon": "images/items/caged_trophy.png",
+        "type": "Currency",
+        "description": "A specimen captured during the Great Hunt",
+        "effect": "Used to construct Test Subjects and unlock crafting recipes",
+        "scaling": {
+            "perTrophy": {
+                "life": "+10%",
+                "damage": "+5%",
+                "attackSpeed": "+5%"
+            },
+            "itemLevel": "Determines Test Subject's item level for drops"
+        },
+        "dropSource": "Dropped by Playmates (special rare monsters in Great Hunt maps)",
+        "stackSize": "Maximum 40",
+        "flavorText": "The beast caged. The hunt successful. What remains is potential."
+    }
+}

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Title - Thaumaturgy</title>
 
-    <!-- Load Dependencies -->
+    <!-- Load GSAP and Dependencies FIRST -->
     <script src="lib/gsap.min.js"></script>
     <script src="lib/ScrollTrigger.min.js"></script>
     <script src="lib/lenis.min.js"></script>
@@ -16,35 +16,96 @@
 
     <!-- Main Styles and Scripts -->
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/bookmarks.css">
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/bookmarks.js" defer></script>
 </head>
 
 <body>
     <div class="bg-pattern"></div>
     <div class="blood-drip"></div>
 
-    <!-- Home Button - Active on all pages except index -->
+    <!-- Bookmark Navigation (Optional - remove if not needed) -->
+    <div id="bookmark-nav" class="bookmark-nav">
+        <button id="bookmark-toggle" class="bookmark-toggle" aria-label="Toggle Bookmarks">
+            <span class="bookmark-icon">📚</span>
+        </button>
+        <div id="bookmark-content" class="bookmark-content">
+            <h3>Quick Navigation</h3>
+            <ul class="bookmark-list">
+                <li><a href="#top">Top</a></li>
+                <li><a href="#section-1">Section 1</a></li>
+                <li><a href="#section-2">Section 2</a></li>
+                <li><a href="#section-3">Section 3</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Home Button -->
     <a href="index.html" class="home-button" aria-label="Return to Home"></a>
 
     <div class="disclaimer">
         <strong>Disclaimer:</strong> Path of Exile, Path of Exile 2, all characters, images, assets, and related content
-        are the property of <strong>Grinding Gear Games (GGG)</strong>. <wbr> This is a fan-made concept created as a love
-        letter to the game and its community. No copyright infringement intended. <wbr> All pixel arts are made by Norman Noone
-        or legitimately acquired on Itch.io.
+        are the property of <strong>Grinding Gear Games (GGG)</strong>. This is a fan-made concept created as a love
+        letter to the game and its community. No copyright infringement intended. All pixel arts are made by Norman
+        Noone or legitimately acquired on Itch.io.
     </div>
 
-    <header>
+    <header id="top">
         <h1>PAGE TITLE</h1>
         <div class="subtitle">Subtitle Text</div>
     </header>
 
     <div class="container">
-        <!-- Your page content goes here -->
+        <!-- Content Section Example 1 -->
+        <div class="philosophy-section" id="section-1">
+            <h3>Section Title</h3>
+            <div class="philosophy-content">
+                <p>
+                    Your content goes here. This is styled consistently with the Design Philosophy page.
+                </p>
 
-        <h2>Section Title</h2>
+                <div class="design-goal">
+                    <h4>Subsection Title</h4>
+                    <p>
+                        Additional content with highlighted formatting.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-        <p>Your content...</p>
+        <!-- Content Section Example 2 -->
+        <div class="philosophy-section" id="section-2">
+            <h3>Another Section</h3>
+            <div class="philosophy-content">
+                <p>
+                    More content here.
+                </p>
 
+                <ul class="philosophy-list">
+                    <li><strong>Item 1:</strong> Description of item 1</li>
+                    <li><strong>Item 2:</strong> Description of item 2</li>
+                    <li><strong>Item 3:</strong> Description of item 3</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Quote Box Example -->
+        <div class="quote-box">
+            "A memorable quote from an NPC or relevant to the content."
+            <br><br>
+            <strong>— Source</strong>
+        </div>
+
+        <!-- Content Section Example 3 -->
+        <div class="philosophy-section" id="section-3">
+            <h3>Final Section</h3>
+            <div class="philosophy-content">
+                <p>
+                    Concluding content.
+                </p>
+            </div>
+        </div>
     </div>
 
     <footer>

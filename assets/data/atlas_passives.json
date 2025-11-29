@@ -1,0 +1,227 @@
+{
+    "atlasPassives": {
+        "best_friends": {
+            "name": "We'll be best friends...",
+            "icon": "images/passives/best_friends.png",
+            "type": "Small Passive",
+            "effect": "+5% Playmate's pack sizes",
+            "description": "Playmates are accompanied by larger packs of monsters",
+            "position": "start",
+            "connections": [
+                "until_slaughter"
+            ],
+            "requiredPoints": 0,
+            "flavorText": "\"We'll be best friends, beast!\" — Einhar Frey"
+        },
+        "until_slaughter": {
+            "name": "...Until we slaughter you!",
+            "icon": "images/passives/until_slaughter.png",
+            "type": "Keystone",
+            "effect": "Add an additional modifier to Playmate's pack",
+            "description": "Each Playmate pack gains one additional dangerous modifier",
+            "isKeystone": true,
+            "position": "branch1-keystone1",
+            "connections": [
+                "catalyst"
+            ],
+            "requiredPoints": 1,
+            "flavorText": "\"...Until we slaughter you!\" — Einhar Frey"
+        },
+        "catalyst": {
+            "name": "Thus, the catalyst",
+            "icon": "images/passives/catalyst.png",
+            "type": "Small Passive",
+            "effect": "+5% Playmate's pack sizes",
+            "description": "Further increases Playmate pack sizes",
+            "position": "branch1-node1",
+            "connections": [
+                "capable_experiencing"
+            ],
+            "requiredPoints": 2,
+            "flavorText": "\"Thus, the catalyst.\" — Tane Octavius"
+        },
+        "capable_experiencing": {
+            "name": "Capable of experiencing",
+            "icon": "images/passives/capable_experiencing.png",
+            "type": "Keystone",
+            "effect": "Player in the Great Hunt map is +1% more delirious per map modifier",
+            "description": "Map modifiers increase delirium intensity. Extremely dangerous but rewarding.",
+            "isKeystone": true,
+            "position": "branch1-keystone2",
+            "connections": [],
+            "requiredPoints": 3,
+            "flavorText": "\"Capable of experiencing.\" — Tane Octavius"
+        },
+        "juicy_one": {
+            "name": "That was a juicy one!",
+            "icon": "images/passives/juicy_one.png",
+            "type": "Small Passive",
+            "effect": "+1 Playmates in map",
+            "description": "Maps can contain one additional Playmate (capped by rare monster count)",
+            "position": "branch2-node1",
+            "connections": [
+                "welcome_omen"
+            ],
+            "requiredPoints": 1,
+            "flavorText": "\"That was a juicy one!\" — Einhar Frey"
+        },
+        "welcome_omen": {
+            "name": "You are a welcome omen!",
+            "icon": "images/passives/welcome_omen.png",
+            "type": "Keystone",
+            "effect": "Each Playmate has 10% chance to be converted",
+            "description": "Choose one: Convert to Rogue Exile, Essence monster, or possessed by Azmeri Spirit",
+            "isKeystone": true,
+            "choices": [
+                "Be converted into a Rogue Exile",
+                "Be converted into an Essence monster",
+                "Be possessed by an additional Azmeri Spirit"
+            ],
+            "position": "branch2-keystone1",
+            "connections": [],
+            "requiredPoints": 2,
+            "flavorText": "\"You are a welcome omen!\" — Einhar Frey"
+        },
+        "love_hunting": {
+            "name": "I... love hunting!",
+            "icon": "images/passives/love_hunting.png",
+            "type": "Small Passive",
+            "effect": "Unique monsters in a Great Hunt map have an additional modifier",
+            "description": "All unique monsters become more dangerous",
+            "position": "branch3-node1",
+            "connections": [
+                "caught",
+                "hunt_or_hunted"
+            ],
+            "requiredPoints": 1,
+            "flavorText": "\"I... love hunting!\" — Einhar Frey"
+        },
+        "caught": {
+            "name": "This one is caught!",
+            "icon": "images/passives/caught.png",
+            "type": "Keystone",
+            "effect": "Great Hunt Maps have at least one Summoning Circle; summoned boss drops at least one Organ",
+            "description": "Guarantees boss encounters and organ drops",
+            "isKeystone": true,
+            "position": "branch3-keystone1",
+            "connections": [],
+            "requiredPoints": 2,
+            "flavorText": "\"This one is caught!\" — Einhar Frey"
+        },
+        "hunt_or_hunted": {
+            "name": "Hunt or be hunted, exile!",
+            "icon": "images/passives/hunt_or_hunted.png",
+            "type": "Keystone",
+            "effect": "Great Hunt Map boss does not grant experience. Map Boss' loot is Lucky",
+            "description": "Trade experience for doubled loot quality",
+            "isKeystone": true,
+            "position": "branch3-keystone2",
+            "connections": [],
+            "requiredPoints": 2,
+            "flavorText": "\"Hunt or be hunted, exile!\" — Einhar Frey"
+        },
+        "rare_ichor": {
+            "name": "A rare Ichor",
+            "icon": "images/passives/rare_ichor.png",
+            "type": "Small Passive",
+            "effect": "Test Subject has an additional modifier",
+            "description": "Makes Test Subjects more dangerous but more rewarding",
+            "position": "branch4-node1",
+            "connections": [
+                "cruel_beyond"
+            ],
+            "requiredPoints": 1,
+            "flavorText": "\"A rare Ichor.\" — Tane Octavius"
+        },
+        "cruel_beyond": {
+            "name": "Cruel beyond measure",
+            "icon": "images/passives/cruel_beyond.png",
+            "type": "Keystone",
+            "effect": "Test Subject has an additional modifier. Choose enhancement",
+            "description": "Test Subject gains one additional modifier plus your choice",
+            "isKeystone": true,
+            "choices": [
+                "Be possessed by an additional Azmeri Spirit",
+                "Be followed by an additional Playmate's pack",
+                "Grant double experience"
+            ],
+            "position": "branch4-keystone1",
+            "connections": [],
+            "requiredPoints": 2,
+            "flavorText": "\"Cruel beyond measure.\" — Tane Octavius"
+        },
+        "sorrow_spite": {
+            "name": "Sorrow and Spite",
+            "icon": "images/passives/sorrow_spite.png",
+            "type": "Small Passive",
+            "effect": "Test Subject is followed by an additional Playmate's pack per Trophy Cage used",
+            "description": "More Trophy Cages = more monster packs during Test Subject fight",
+            "position": "branch5-node1",
+            "connections": [
+                "slow_progress"
+            ],
+            "requiredPoints": 1,
+            "flavorText": "\"Sorrow and Spite.\" — Tane Octavius"
+        },
+        "slow_progress": {
+            "name": "Slow progress is still progress",
+            "icon": "images/passives/slow_progress.png",
+            "type": "Keystone",
+            "effect": "Test subject has 5% to drop organs used. Thaumaturgic crafting has 5% to fail",
+            "description": "Risk crafting failure for a chance to reclaim organs. High risk, high reward.",
+            "isKeystone": true,
+            "position": "branch5-keystone1",
+            "connections": [],
+            "requiredPoints": 2,
+            "warning": "Crafting can fail and consume all ingredients!",
+            "flavorText": "\"Slow progress is still progress.\" — Tane Octavius"
+        }
+    },
+    "passiveTree": {
+        "name": "Thaumaturgy Atlas Passive Tree",
+        "description": "Customize your Great Hunt experience",
+        "totalPoints": 12,
+        "keystones": 7,
+        "smallPassives": 5,
+        "branches": [
+            {
+                "name": "Delirium Path",
+                "nodes": [
+                    "best_friends",
+                    "until_slaughter",
+                    "catalyst",
+                    "capable_experiencing"
+                ]
+            },
+            {
+                "name": "Playmate Conversion",
+                "nodes": [
+                    "juicy_one",
+                    "welcome_omen"
+                ]
+            },
+            {
+                "name": "Boss Enhancement",
+                "nodes": [
+                    "love_hunting",
+                    "caught",
+                    "hunt_or_hunted"
+                ]
+            },
+            {
+                "name": "Test Subject Power",
+                "nodes": [
+                    "rare_ichor",
+                    "cruel_beyond"
+                ]
+            },
+            {
+                "name": "Risk-Reward",
+                "nodes": [
+                    "sorrow_spite",
+                    "slow_progress"
+                ]
+            }
+        ]
+    }
+}
