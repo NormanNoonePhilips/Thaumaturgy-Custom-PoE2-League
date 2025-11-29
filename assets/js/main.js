@@ -246,15 +246,13 @@ function initializeTooltips() {
         console.log(`Initialized ${elementsWithTooltips.length} tooltips`);
     }
 
-    // Add tooltips to nav cards
+    // Add tooltips to nav cards (title only); keep 'Coming Soon' tooltip for disabled nav-cards
     const navCards = document.querySelectorAll('.nav-card');
     navCards.forEach(card => {
         const title = card.querySelector('h3')?.textContent;
-        const description = card.querySelector('p')?.textContent;
-
         if (title && !card.classList.contains('disabled')) {
             tippy(card, {
-                content: `<strong>${title}</strong><br><small>Click to explore</small>`,
+                content: `<strong>${title}</strong>`,
                 allowHTML: true,
                 theme: 'thaumaturgy',
                 animation: 'fade',
@@ -264,7 +262,7 @@ function initializeTooltips() {
             });
         } else if (card.classList.contains('disabled')) {
             tippy(card, {
-                content: 'Coming Soon - Under Construction',
+                content: 'Coming Soon',
                 theme: 'thaumaturgy',
                 animation: 'fade',
                 duration: [300, 200],
@@ -273,7 +271,7 @@ function initializeTooltips() {
             });
         }
     });
-
+    
     // Add tooltips to feature items on index page
     const featureItems = document.querySelectorAll('.feature-item');
     featureItems.forEach(item => {
