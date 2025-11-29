@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work in Progress - Thaumaturgy</title>
+
+    <!-- Load Dependencies -->
+    <script src="lib/gsap.min.js"></script>
+    <script src="lib/ScrollTrigger.min.js"></script>
+    <script src="lib/lenis.min.js"></script>
+    <script src="lib/popper.min.js"></script>
+    <link rel="stylesheet" href="lib/tippy.css">
+    <script src="lib/tippy.umd.min.js"></script>
+
+    <!-- Main Styles and Scripts -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/js/main.js" defer></script>
+
+    <style>
+        .wip-container {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .wip-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 30px;
+            opacity: 0.7;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        .wip-title {
+            font-size: 3em;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .wip-subtitle {
+            font-size: 1.3em;
+            color: #c4915f;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .wip-message {
+            font-size: 1.1em;
+            color: #a0826d;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        .wip-features {
+            background: rgba(40, 30, 20, 0.5);
+            border: 2px solid rgba(139, 69, 19, 0.4);
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .wip-features h3 {
+            color: #d4af37;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .wip-feature-list {
+            text-align: left;
+            color: #c4a57b;
+            line-height: 2;
+        }
+
+        .wip-feature-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .wip-feature-list li::before {
+            content: "⚔";
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.8) 0%, rgba(60, 40, 30, 0.8) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 8px;
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 1) 0%, rgba(60, 40, 30, 1) 100%);
+            border-color: #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: rgba(139, 0, 0, 0.3);
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            color: #ff6b6b;
+            border: 1px solid rgba(139, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-pattern"></div>
+    <div class="blood-drip"></div>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-button" aria-label="Return to Home"></a>
+
+    <div class="disclaimer">
+        <strong>Disclaimer:</strong> Path of Exile, Path of Exile 2, all characters, images, assets, and related content
+        are the property of <strong>Grinding Gear Games (GGG)</strong>. This is a fan-made concept created as a love
+        letter to the game and its community. No copyright infringement intended. All pixel arts are made by Norman
+        Noone
+        or legitimately acquired on Itch.io.
+    </div>
+
+    <header>
+        <h1>WORK IN PROGRESS</h1>
+        <div class="subtitle">This Page is Currently Under Construction</div>
+    </header>
+
+    <div class="container">
+        <div class="wip-container">
+            <div class="wip-icon">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="hammerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#8b4513;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Hammer Handle -->
+                    <rect x="85" y="60" width="30" height="120" fill="url(#hammerGrad)" rx="5" />
+                    <!-- Hammer Head -->
+                    <rect x="50" y="40" width="100" height="40" fill="url(#hammerGrad)" rx="5" />
+                    <!-- Sparkles -->
+                    <circle cx="40" cy="50" r="3" fill="#d4af37" opacity="0.8">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="160" cy="60" r="3" fill="#d4af37" opacity="0.8">
+                        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="100" cy="20" r="3" fill="#d4af37" opacity="0.8">
+                        <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
+            </div>
+
+            <h2 class="wip-title">Crafting in Progress...</h2>
+
+            <p class="wip-subtitle">
+                This section is currently being assembled by Tane in the Factory
+            </p>
+
+            <p class="wip-message">
+                We're hunting down the content for this page! Like Einhar tracking his prey through the wilderness,
+                we're carefully crafting each section to ensure it meets the quality standards worthy of a Great Hunt.
+            </p>
+
+            <div class="coming-soon-badge">
+                📜 Content Coming Soon
+            </div>
+
+            <div class="wip-features">
+                <h3>What's Being Worked On:</h3>
+                <ul class="wip-feature-list">
+                    <li>Detailed mechanics documentation</li>
+                    <li>Visual guides and diagrams</li>
+                    <li>Interactive examples</li>
+                    <li>Comprehensive tables and statistics</li>
+                    <li>NPC dialogue integration</li>
+                </ul>
+            </div>
+
+            <a href="index.html" class="back-button">← Return to Main Page</a>
+
+            <p style="color: #8b4513; font-style: italic; margin-top: 40px;">
+                "Patience, exile. The best hunts require careful preparation."<br>
+                <strong>— Einhar Frey</strong>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p style="color: #8b4513; font-style: italic; margin-top: 30px;">
+            Custom League Design • Community Fan Project by Norman Noone
+        </p>
+        <p style="color: #6b5641; font-size: 0.9em; margin-top: 10px;">
+            <a href="index.html" style="color: #d4af37; text-decoration: none;">← Back to Home</a>
+        </p>
+    </footer>
+</body>
+
+</html>

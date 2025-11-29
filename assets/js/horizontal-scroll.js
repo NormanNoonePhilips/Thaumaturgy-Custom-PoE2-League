@@ -3,6 +3,12 @@
    =================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Check if scroll animations should be disabled (e.g., on index page with fade animations)
+    if (window.disableScrollAnimations) {
+        console.log('Scroll animations disabled on this page');
+        return;
+    }
+
     // Wait for GSAP and plugins to load
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
         console.error('GSAP or ScrollTrigger not loaded');
