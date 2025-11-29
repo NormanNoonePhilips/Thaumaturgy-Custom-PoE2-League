@@ -3,6 +3,8 @@
    =================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Signal that JS is running; CSS uses `html.js` to apply initial hidden animation state
+    document.documentElement.classList.add('js');
     console.log('Thaumaturgy - Initializing...');
 
     // Initialize Lenis Smooth Scroll
@@ -37,13 +39,43 @@ document.addEventListener('DOMContentLoaded', function () {
         // Sync Lenis with GSAP ScrollTrigger
         lenis.on('scroll', ScrollTrigger.update);
 
+        // Integrate Lenis and ScrollTrigger via scrollerProxy so ScrollTrigger uses Lenis' scroll values
+        const scrollerElement = document.scrollingElement || document.documentElement;
+        ScrollTrigger.scrollerProxy(scrollerElement, {
+            scrollTop(value) {
+                if (arguments.length) {
+                    // scrollTo accepts coordinates; using immediate flag if available prevents smooth animation
+                    if (typeof lenis.scrollTo === 'function') {
+                        // lenis.scrollTo(value, { immediate: true }); // some Lenis versions accept options
+                        lenis.scrollTo(value);
+                    } else {
+                        window.scrollTo(0, value);
+                    }
+                }
+                // Return the current position from Lenis if available; fall back to native scroll
+                return typeof lenis.scroll === 'number' ? lenis.scroll : window.scrollY || document.documentElement.scrollTop;
+            },
+            getBoundingClientRect() {
+                return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+            },
+            // pinType should be 'transform' if the container uses transforms (Lenis uses transforms by default), otherwise 'fixed'
+            pinType: scrollerElement.style.transform ? 'transform' : 'fixed'
+        });
+
+        // Ensure ScrollTrigger recalculates sizes and positions after the proxy has been set
+        ScrollTrigger.addEventListener('refresh', () => lenis.update && lenis.update());
+        ScrollTrigger.refresh();
+
         // (Lenis is already driven above via the GSAP ticker)
 
         gsap.ticker.lagSmoothing(0);
 
         // Animate elements on scroll
-        gsap.utils.toArray('.nav-card').forEach((card, index) => {
-            gsap.from(card, {
+        const animatedCards = gsap.utils.toArray('.nav-card');
+        animatedCards.forEach((card, index) => {
+            // Make sure this element is part of our JS animation flow
+            card.classList.add('animate-init');
+            gsap.to(card, {
                 scrollTrigger: {
                     trigger: card,
                     start: 'top 80%',
@@ -52,8 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     ,
                     invalidateOnRefresh: true
                 },
-                opacity: 0,
-                y: 50,
+                opacity: 1,
+                y: 0,
                 duration: 0.8,
                 delay: index * 0.1,
                 ease: 'power2.out'
@@ -63,9 +95,22 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
+        // Failsafe: if some animated elements remain invisible due to trigger issues, reveal them after a short timeout
+        setTimeout(() => {
+            animatedCards.forEach(el => {
+                if (window.getComputedStyle(el).opacity === '0') {
+                    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translate3d(0,0,0)';
+                }
+            });
+        }, 450);
+
         // Animate feature items
-        gsap.utils.toArray('.feature-item').forEach((item, index) => {
-            gsap.from(item, {
+        const animatedFeatures = gsap.utils.toArray('.feature-item');
+        animatedFeatures.forEach((item, index) => {
+            item.classList.add('animate-init');
+            gsap.to(item, {
                 scrollTrigger: {
                     trigger: item,
                     start: 'top 80%',
@@ -73,8 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     ,
                     invalidateOnRefresh: true
                 },
-                opacity: 0,
-                x: -30,
+                opacity: 1,
+                x: 0,
                 duration: 0.6,
                 delay: index * 0.05,
                 ease: 'power2.out'
@@ -84,9 +129,21 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
+        setTimeout(() => {
+            animatedFeatures.forEach(el => {
+                if (window.getComputedStyle(el).opacity === '0') {
+                    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translate3d(0,0,0)';
+                }
+            });
+        }, 450);
+
         // Animate NPC cards
-        gsap.utils.toArray('.npc-card').forEach((card, index) => {
-            gsap.from(card, {
+        const animatedNpcs = gsap.utils.toArray('.npc-card');
+        animatedNpcs.forEach((card, index) => {
+            card.classList.add('animate-init');
+            gsap.to(card, {
                 scrollTrigger: {
                     trigger: card,
                     start: 'top 80%',
@@ -94,8 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     ,
                     invalidateOnRefresh: true
                 },
-                opacity: 0,
-                y: 50,
+                opacity: 1,
+                y: 0,
                 duration: 0.8,
                 delay: index * 0.2,
                 ease: 'power2.out'
@@ -104,6 +161,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 force3D: true
             });
         });
+
+        setTimeout(() => {
+            animatedNpcs.forEach(el => {
+                if (window.getComputedStyle(el).opacity === '0') {
+                    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translate3d(0,0,0)';
+                }
+            });
+        }, 450);
 
         // Parallax effect for header
         if (document.querySelector('header')) {

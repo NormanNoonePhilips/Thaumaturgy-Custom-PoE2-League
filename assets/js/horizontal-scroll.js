@@ -50,20 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ease: 'power2.out'
         });
 
-        // Then stagger the cards within
-        gsap.from('.nav-card', {
-            scrollTrigger: {
-                trigger: navGrid,
-                start: 'top 70%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 30,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: 'power2.out',
-            delay: 0.3
-        });
+        // Individual nav-card animations handled centrally in main.js to avoid animation conflicts
     }
 
     console.log('Scroll animations initialized');

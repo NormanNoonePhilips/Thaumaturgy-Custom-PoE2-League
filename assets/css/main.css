@@ -382,3 +382,11 @@ footer {
     color: #d4af37;
     opacity: 0.6;
 }
+
+/* JS-controlled animation init class.
+   We apply .animate-init only when JS enables scroll animations.
+   If JS doesn't run or animations are disabled, items remain visible by default. */
+html.js .animate-init {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+}
