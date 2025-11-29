@@ -15,12 +15,20 @@ document.addEventListener('DOMContentLoaded', function () {
         touchMultiplier: 2
     });
 
-    function raf(time) {
-        lenis.raf(time);
+    // Use GSAP ticker to drive Lenis for consistent frame timing with GSAP/ScrollTrigger
+    // Avoid double-calling lenis.raf by using the GSAP ticker only.
+    if (typeof gsap !== 'undefined') {
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+    } else {
+        // Fallback: if GSAP isn't loaded yet, call Lenis via requestAnimationFrame
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
         requestAnimationFrame(raf);
     }
-
-    requestAnimationFrame(raf);
 
     // Initialize GSAP ScrollTrigger (only if not disabled)
     if (!window.disableScrollAnimations && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
@@ -29,9 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Sync Lenis with GSAP ScrollTrigger
         lenis.on('scroll', ScrollTrigger.update);
 
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
+        // (Lenis is already driven above via the GSAP ticker)
 
         gsap.ticker.lagSmoothing(0);
 
@@ -43,12 +49,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     start: 'top 80%',
                     end: 'top 20%',
                     toggleActions: 'play none none reverse'
+                    ,
+                    invalidateOnRefresh: true
                 },
                 opacity: 0,
                 y: 50,
                 duration: 0.8,
                 delay: index * 0.1,
                 ease: 'power2.out'
+                ,
+                immediateRender: false,
+                force3D: true
             });
         });
 
@@ -59,12 +70,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     trigger: item,
                     start: 'top 80%',
                     toggleActions: 'play none none reverse'
+                    ,
+                    invalidateOnRefresh: true
                 },
                 opacity: 0,
                 x: -30,
                 duration: 0.6,
                 delay: index * 0.05,
                 ease: 'power2.out'
+                ,
+                immediateRender: false,
+                force3D: true
             });
         });
 
@@ -75,12 +91,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     trigger: card,
                     start: 'top 80%',
                     toggleActions: 'play none none reverse'
+                    ,
+                    invalidateOnRefresh: true
                 },
                 opacity: 0,
                 y: 50,
                 duration: 0.8,
                 delay: index * 0.2,
                 ease: 'power2.out'
+                ,
+                immediateRender: false,
+                force3D: true
             });
         });
 

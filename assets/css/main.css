@@ -203,6 +203,21 @@ h2 {
     text-decoration: none;
     display: block;
 }
+/* Improve scroll animation rendering to reduce stutter. */
+.feature-item,
+.npc-card,
+.nav-card,
+.philosophy-section {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* Ensure a consistent baseline transform to avoid subpixel differences */
+.feature-item,
+.npc-card,
+.nav-card {
+    transform: translate3d(0, 0, 0);
+}
 
 .nav-card::before {
     content: '';
