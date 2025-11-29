@@ -131,7 +131,11 @@ html {
 }
 
 /* Fallback when the image is missing */
+/*
+*
 .bookmark-toggle.icon-fallback::before {
     content: "Bookmarks";
     font-size: 28px;
 }
+*
+*/
