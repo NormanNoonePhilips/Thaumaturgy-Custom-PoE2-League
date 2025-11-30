@@ -2,6 +2,48 @@
    THAUMATURGY - MAIN JAVASCRIPT
    =================================== */
 
+// Mobile detection & redirect
+// If the user is on a small mobile device and not on the mobile warning page, redirect to mobile_warning.html
+// A user can override redirection by choosing "View site anyway" (sets localStorage 'mobile_override')
+function isLikelyMobile() {
+    try {
+        const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+        const smallScreen = window.matchMedia && window.matchMedia('(max-width: 480px)').matches;
+        const mobileUA = /Mobi|Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+        return smallScreen || mobileUA;
+    } catch (e) {
+        return false;
+    }
+}
+
+function isMobileWarningPage() {
+    try {
+        const path = window.location.pathname || '';
+        return path.toLowerCase().endsWith('mobile_warning.html') || path.toLowerCase().includes('mobile_warning');
+    } catch (e) { return false; }
+}
+
+function mobileRedirectIfNeeded() {
+    try {
+        if (!isLikelyMobile()) return; // not a mobile view
+        if (isMobileWarningPage()) return; // already on the warning page
+        // If user has explicitly opted out of redirect, do nothing
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('mobile_override') === 'true') return;
+
+        // Build a redirect URL that keeps track of which page user came from so 'View site anyway' can return
+        const from = (window.location.pathname || window.location.href).split('/').pop();
+        const redirectUrl = (window.location.href || 'mobile_warning.html').replace(/[^/]*$/, 'mobile_warning.html') + '?from=' + encodeURIComponent(from || 'index.html');
+        // Do the redirect
+        window.location.replace(redirectUrl);
+    } catch (e) {
+        // Swallow errors — if anything goes wrong, allow the site to load normally
+        console.warn('mobileRedirectIfNeeded: ', e);
+    }
+}
+
+// Perform redirect check as soon as the script is executed (this file is loaded deferred in the template)
+mobileRedirectIfNeeded();
+
 document.addEventListener('DOMContentLoaded', function () {
     // Signal that JS is running; CSS uses `html.js` to apply initial hidden animation state
     document.documentElement.classList.add('js');

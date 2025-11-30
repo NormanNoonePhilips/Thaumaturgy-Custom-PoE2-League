@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Warning - Thaumaturgy</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        /* Lightweight mobile-specific styles for the warning page */
+        :root {
+            --bg: #0b0b0c;
+            --panel: #241f1a;
+            --accent: #d4af37;
+            --text: #f4e9d6;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            background: linear-gradient(180deg, #070607 0%, #161210 100%);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .mobile-warning-wrap {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .panel {
+            max-width: 420px;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(36, 30, 25, 0.9), rgba(28, 24, 20, 0.9));
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin: 6px 0 6px 0;
+            color: var(--accent);
+        }
+
+        .lead {
+            margin: 12px 0 14px 0;
+            font-size: 1.04rem;
+            color: var(--text);
+        }
+
+        .quote {
+            margin: 16px 0 18px 0;
+            font-size: 0.98rem;
+            color: #ffefd5;
+            background: rgba(0, 0, 0, 0.15);
+            border-left: 4px solid rgba(212, 175, 55, 0.6);
+            padding: 12px 12px;
+            border-radius: 6px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            background: var(--accent);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+            border: none;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+        }
+
+        .small {
+            font-size: 0.86rem;
+            color: #cfc8b2;
+        }
+
+        @media (min-width: 422px) {
+            .lead {
+                font-size: 1.12rem;
+            }
+
+            .panel {
+                padding: 26px;
+            }
+        }
+    </style>
+    <script>
+        // Small client script to let the 'view anyway' option persist (we keep the heavy detection in assets/js/main.js)
+        function mobileWarningViewAnyway() {
+            try { localStorage.setItem('mobile_override', 'true'); } catch (e) { }
+            // Attempt to return to the previous page (if any) or index
+            var from = (new URLSearchParams(window.location.search)).get('from');
+            if (from) {
+                window.location = from;
+            } else if (document.referrer && document.referrer !== window.location.href) {
+                window.location = document.referrer;
+            } else {
+                window.location = 'index.html';
+            }
+        }
+
+        function mobileWarningTryAgainLater() {
+            // Keep user on the page but offer the refresh
+            try { localStorage.setItem('mobile_override', 'true'); } catch (e) { }
+            location.reload();
+        }
+    </script>
+</head>
+
+<body>
+    <div class="mobile-warning-wrap">
+        <div class="panel">
+            <h1>Heads up — This site is not mobile-ready</h1>
+            <div class="lead">We’re aware the layout and interactions don’t behave well on smaller screens. We're
+                working on a fix and appreciate your patience.</div>
+
+            <div class="quote">“Tane: 'Einhar, my potions have feelings — and now they're all very offended. Could you
+                please stop using them as explosives?' — <em>exasperated, in the lab</em>”</div>
+
+            <div class="small">We recommend visiting from a tablet or desktop for the best experience. We’ll fix this
+                soon. Probably before the next mysterious explosion.</div>
+
+            <div class="controls">
+                <button class="btn" onclick="mobileWarningViewAnyway()">View site anyway</button>
+                <a class="btn secondary" href="index.html" role="button"
+                    onclick="localStorage.setItem('mobile_override','true')">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
