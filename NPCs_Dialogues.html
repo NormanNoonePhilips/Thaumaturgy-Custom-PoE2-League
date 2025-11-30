@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <title>Work in Progress - Thaumaturgy</title>
 
     <!-- Load Dependencies -->
@@ -17,6 +18,7 @@
     <!-- Main Styles and Scripts -->
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="assets/js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer crossorigin="anonymous"></script>
 
     <style>
         .wip-container {
@@ -141,6 +143,23 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Thaumaturgy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Lore_and_Overview.html">Lore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Core_Mechanics.html">Mechanics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Organ_systems.html">Organs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Test_Subjects.html">Test Subjects</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="bg-pattern"></div>
     <div class="blood-drip"></div>
 
@@ -160,7 +179,7 @@
         <div class="subtitle">This Page is Currently Under Construction</div>
     </header>
 
-    <div class="container">
+    <div class="container site-container">
         <div class="wip-container">
             <div class="wip-icon">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">

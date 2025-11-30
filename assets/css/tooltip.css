@@ -19,7 +19,8 @@
 /* Small inline icon */
 .poe-item-icon {
     width: 20px;
-    height: 20px;
+    height: auto;
+    max-width: 100%;
     vertical-align: middle;
     display: inline-block;
     border: 1px solid rgba(139, 69, 19, 0.4);
