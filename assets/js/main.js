@@ -2,82 +2,10 @@
    THAUMATURGY - MAIN JAVASCRIPT
    =================================== */
 
-// Accessibility: auto-close navbar on mobile after click, focus styles, and keyboard navigation for bookmarks
 document.addEventListener('DOMContentLoaded', function () {
-    // Auto-close Bootstrap navbar on mobile after click
-    const navCollapse = document.getElementById('mainNavbar');
-    if (navCollapse) {
-        navCollapse.querySelectorAll('a.nav-link').forEach(link => {
-            link.addEventListener('click', function () {
-                if (window.innerWidth < 992) { // md breakpoint
-                    const navbar = document.querySelector('.navbar-collapse');
-                    if (navbar && navbar.classList.contains('show')) {
-                        new bootstrap.Collapse(navbar).hide();
-                    }
-                }
-            });
-        });
-    }
-
-    // Keyboard navigation for bookmark panel
-    const bookmarkToggle = document.getElementById('bookmark-toggle');
-    const bookmarkNav = document.getElementById('bookmark-nav');
-    if (bookmarkToggle && bookmarkNav) {
-        bookmarkToggle.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                bookmarkNav.classList.toggle('active');
-                bookmarkToggle.setAttribute('aria-expanded', bookmarkNav.classList.contains('active'));
-                if (bookmarkNav.classList.contains('active')) {
-                    const firstLink = bookmarkNav.querySelector('.bookmark-list a');
-                    if (firstLink) firstLink.focus();
-                }
-            }
-        });
-        // Allow Escape to close
-        bookmarkNav.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                bookmarkNav.classList.remove('active');
-                bookmarkToggle.setAttribute('aria-expanded', false);
-                bookmarkToggle.focus();
-            }
-        });
-    }
-
-    // Focus style for nav-card and bookmark links
-    document.body.addEventListener('focusin', function (e) {
-        if (e.target.classList.contains('nav-card') || e.target.closest('.nav-card')) {
-            e.target.classList.add('focus-visible');
-        }
-        if (e.target.classList.contains('bookmark-toggle') || e.target.classList.contains('bookmark-list')) {
-            e.target.classList.add('focus-visible');
-        }
-    });
-    document.body.addEventListener('focusout', function (e) {
-        if (e.target.classList.contains('nav-card') || e.target.closest('.nav-card')) {
-            e.target.classList.remove('focus-visible');
-        }
-        if (e.target.classList.contains('bookmark-toggle') || e.target.classList.contains('bookmark-list')) {
-            e.target.classList.remove('focus-visible');
-        }
-    });
-
-    // --- Merged from second DOMContentLoaded block ---
     // Signal that JS is running; CSS uses `html.js` to apply initial hidden animation state
     document.documentElement.classList.add('js');
     console.log('Thaumaturgy - Initializing...');
-
-    // Detect touch devices and reduced motion
-    const isTouchDevice = (('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0 || (navigator.msMaxTouchPoints || 0) > 0);
-    window.isTouchDevice = isTouchDevice;
-    document.documentElement.classList.add(isTouchDevice ? 'touch' : 'no-touch');
-
-    // Respect user 'prefers-reduced-motion'
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-        document.documentElement.classList.add('reduce-motion');
-        window.disableScrollAnimations = true;
-    }
 
     // Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
@@ -260,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initialize Tippy.js tooltips
-    initializeTooltips(isTouchDevice);
+    initializeTooltips();
 
     // Add active state to home button on current page
     const homeButton = document.querySelector('.home-button');
@@ -270,30 +198,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     console.log('Thaumaturgy - League Mechanic Initialized');
-
-    // --- Merged from third DOMContentLoaded block ---
-    // Initialize touch swipe behaviors
-    if (window.isTouchDevice) {
-        // make the feature grid and NPC showcase horizontally scrollable on small screens
-        const featureGrid = document.querySelector('.feature-grid');
-        const npcShowcase = document.querySelector('.npc-showcase');
-        if (featureGrid) addSwipeScroll(featureGrid);
-        if (npcShowcase) addSwipeScroll(npcShowcase);
-
-        // Improve bookmark UX on mobile: close when user taps outside
-        if (bookmarkNav) {
-            document.addEventListener('touchstart', (e) => {
-                if (!bookmarkNav.contains(e.target)) {
-                    bookmarkNav.classList.remove('active');
-                    if (bookmarkToggle) bookmarkToggle.setAttribute('aria-expanded', false);
-                }
-            }, { passive: true });
-        }
-    }
 });
 
 // Tooltip initialization function
-function initializeTooltips(isTouch) {
+function initializeTooltips() {
     if (typeof tippy === 'undefined') {
         console.warn('Tippy.js not loaded');
         return;
@@ -333,9 +241,7 @@ function initializeTooltips(isTouch) {
             animation: 'fade',
             duration: [300, 200],
             arrow: true,
-            placement: 'top',
-            trigger: isTouch ? 'click' : 'mouseenter focus',
-            interactive: !!isTouch
+            placement: 'top'
         });
         console.log(`Initialized ${elementsWithTooltips.length} tooltips`);
     }
@@ -353,9 +259,6 @@ function initializeTooltips(isTouch) {
                 duration: [300, 200],
                 arrow: true,
                 placement: 'top'
-            , trigger: isTouch ? 'click' : 'mouseenter focus',
-            interactive: !!isTouch,
-            hideOnClick: !!isTouch
             });
         } else if (card.classList.contains('disabled')) {
             tippy(card, {
@@ -365,9 +268,6 @@ function initializeTooltips(isTouch) {
                 duration: [300, 200],
                 arrow: true,
                 placement: 'top'
-            , trigger: isTouch ? 'click' : 'mouseenter focus',
-            interactive: !!isTouch,
-            hideOnClick: !!isTouch
             });
         }
     });
@@ -385,9 +285,7 @@ function initializeTooltips(isTouch) {
                 duration: [300, 200],
                 arrow: true,
                 placement: 'top',
-                trigger: isTouch ? 'click' : 'mouseenter focus',
-                interactive: !!isTouch,
-                hideOnClick: !!isTouch
+                trigger: 'mouseenter focus'
             });
         }
     });
@@ -406,51 +304,9 @@ function initializeTooltips(isTouch) {
                 duration: [300, 200],
                 arrow: true,
                 placement: 'top'
-            , trigger: isTouch ? 'click' : 'mouseenter focus',
-            interactive: !!isTouch,
-            hideOnClick: !!isTouch
             });
-        }
-    });
-
-    // Close tooltips on Escape key for accessibility
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' || e.key === 'Esc') {
-            if (typeof tippy !== 'undefined' && typeof tippy.hideAll === 'function') {
-                tippy.hideAll();
-            }
         }
     });
 
     console.log('Tooltips initialized for all interactive elements');
 }
-
-// Horizontal swipe/drag to scroll helper (touch support)
-function addSwipeScroll(container) {
-    if (!container) return;
-    let startX = 0;
-    let startScroll = 0;
-    let isPointerDown = false;
-
-    container.style.webkitOverflowScrolling = 'touch';
-    container.style.overflowX = 'auto';
-
-    container.addEventListener('touchstart', (e) => {
-        isPointerDown = true;
-        startX = e.touches[0].pageX;
-        startScroll = container.scrollLeft;
-    }, { passive: true });
-
-    container.addEventListener('touchmove', (e) => {
-        if (!isPointerDown) return;
-        const x = e.touches[0].pageX;
-        const diff = startX - x;
-        container.scrollLeft = startScroll + diff;
-    }, { passive: true });
-
-    container.addEventListener('touchend', () => {
-        isPointerDown = false;
-    });
-}
-
-// Initialize touch swipe behaviors

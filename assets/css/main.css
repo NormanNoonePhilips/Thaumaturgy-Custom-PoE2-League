@@ -17,20 +17,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Focus-visible styles for accessibility */
-.nav-card.focus-visible, .nav-card:focus-visible {
-    outline: 2px solid #d4af37;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
-}
-
-.bookmark-toggle.focus-visible, .bookmark-toggle:focus-visible,
-.bookmark-list a:focus-visible {
-    outline: 2px solid #d4af37;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
-}
-
 /* Background Pattern */
 .bg-pattern {
     position: fixed;
@@ -94,8 +80,8 @@ body {
     content: "⌂";
 }
 
-/* Site Container (used with Bootstrap's .container class) */
-.site-container {
+/* Container */
+.container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
@@ -196,7 +182,9 @@ h2 {
 
 /* Navigation Cards Grid */
 .nav-grid {
-    /* Use Bootstrap row system; this keeps only max width and margin in our custom class */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
     max-width: 1200px;
     margin: 60px auto;
     padding: 0 20px;
@@ -214,14 +202,6 @@ h2 {
     overflow: hidden;
     text-decoration: none;
     display: block;
-}
-
-/* Ensure nav-cards inside Bootstrap columns stretch to fill the column
-   and align content vertically for consistent height */
-.nav-card.col-12, .nav-card[class*="col-"] {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 /* Improve scroll animation rendering to reduce stutter. */
 .feature-item,
@@ -277,8 +257,7 @@ h2 {
 
 .nav-card-icon img {
     width: 100%;
-    height: auto;
-    max-width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -326,17 +305,6 @@ footer {
     border-top: 2px solid rgba(139, 69, 19, 0.3);
 }
 
-    /* Smaller header padding on small screens to reduce overflow */
-    @media (max-width: 576px) {
-        header {
-            padding: 40px 12px 30px;
-        }
-
-        h1 {
-            font-size: 2em;
-            letter-spacing: 4px;
-        }
-    }
 .footer-quote {
     max-width: 700px;
     margin: 30px auto;
@@ -377,61 +345,6 @@ footer {
         width: 45px;
         height: 45px;
         font-size: 20px;
-    }
-
-    /* Hide the fixed home button on small screens, navigation via navbar is provided */
-    .home-button {
-        display: none;
-    }
-}
-
-/* Touch friendly improvements for small screens */
-@media (max-width: 576px) {
-    .nav-card {
-        padding: 20px;
-        min-height: 140px;
-    }
-
-    .bookmark-toggle {
-        width: 48px;
-        height: 48px;
-        font-size: 18px;
-    }
-
-    /* Make feature and npc grids horizontally scrollable with touch
-       Turning the row into a horizontally scrolling area allows swipe gestures */
-    .feature-grid,
-    .npc-showcase.row {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        gap: 16px !important;
-        padding: 12px 8px !important;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x proximity;
-    }
-
-    .feature-grid .feature-item,
-    .npc-showcase .npc-card {
-        flex: 0 0 260px;
-        scroll-snap-align: start;
-        min-width: 260px;
-    }
-}
-
-/* Apply hover-based effects only on devices that support hover (desktop primarily) */
-@media (hover: hover) {
-    .nav-card:hover {
-        border-color: #d4af37;
-        box-shadow:
-            0 0 30px rgba(212, 175, 55, 0.4),
-            inset 0 0 20px rgba(212, 175, 55, 0.1);
-        transform: translateY(-8px) scale(1.02);
-    }
-
-    .nav-card:hover .nav-card-icon {
-        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.7));
-        transform: scale(1.1);
     }
 }
 
